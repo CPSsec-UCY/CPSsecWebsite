@@ -36,7 +36,7 @@ export default function PlatformsPage() {
               style={{ animationDelay: `${300 + i * 80}ms` }}
             >
               <div className="flex items-start gap-4">
-                <div className="rounded-xl border border-slate-700/50 bg-slate-800/60 p-3">
+                <div className="rounded-xl border border-slate-700/50 bg-slate-800/70 p-3">
                   <Icon className="h-6 w-6 text-cyber-400" />
                 </div>
                 <div className="min-w-0 flex-1">

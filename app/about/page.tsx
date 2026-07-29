@@ -136,7 +136,7 @@ export default function AboutPage() {
             return (
               <div key={theme.title} className="card p-4">
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 shrink-0 rounded-lg border border-slate-700/50 bg-slate-800/60 p-1.5">
+                  <div className="mt-0.5 shrink-0 rounded-lg border border-slate-700/50 bg-slate-800/70 p-1.5">
                     <Icon className="h-4 w-4 text-cyber-400" />
                   </div>
                   <div>
