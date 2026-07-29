@@ -1,0 +1,46 @@
+import { getRoleGroups } from "@/lib/team";
+import TeamMemberCard from "@/components/TeamMemberCard";
+import { Users } from "lucide-react";
+
+export default function TeamPage() {
+  const groups = getRoleGroups();
+
+  const roleOrder = [
+    "Lab Director",
+    "Faculty",
+    "Postdoctoral Researcher",
+    "PhD Candidate",
+    "MSc Student",
+    "Research Assistant",
+    "Alumni",
+  ];
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mb-10">
+        <div className="inline-flex items-center gap-2 rounded-full border border-cyber-500/20 bg-cyber-500/10 px-3 py-1 mb-4">
+          <Users className="h-3.5 w-3.5 text-cyber-400" />
+          <span className="text-xs font-medium text-cyber-300">Our People</span>
+        </div>
+        <h1 className="text-3xl font-bold text-white sm:text-4xl">Team</h1>
+        <p className="mt-2 text-slate-400 max-w-2xl">
+          Our interdisciplinary team brings together expertise in cybersecurity,
+          control systems, critical infrastructure protection, and embedded systems.
+        </p>
+      </div>
+
+      {roleOrder
+        .filter((role) => groups[role])
+        .map((role) => (
+          <section key={role} className="mb-12">
+            <h2 className="mb-4 text-lg font-semibold text-cyber-300">{role}</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {groups[role].map((member) => (
+                <TeamMemberCard key={member.id} member={member} />
+              ))}
+            </div>
+          </section>
+        ))}
+    </div>
+  );
+}

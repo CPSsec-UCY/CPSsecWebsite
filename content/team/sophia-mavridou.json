@@ -1,0 +1,17 @@
+{
+  "id": "sophia-mavridou",
+  "slug": "sophia-mavridou",
+  "name": "Sophia Mavridou",
+  "role": "PhD Candidate",
+  "bio": "Sophia is a PhD candidate focused on firmware security and trusted execution environments for embedded CPS devices. Her research includes side-channel analysis of TEE implementations and secure boot attestation for resource-constrained industrial controllers.",
+  "shortBio": "PhD candidate researching firmware security and TEEs for embedded CPS.",
+  "avatarUrl": "/images/team/sophia-mavridou.jpg",
+  "socials": {
+    "email": "sophia@cpssec.org",
+    "github": "smavridou",
+    "linkedin": "sophia-mavridou"
+  },
+  "researchInterests": ["Embedded Systems", "Firmware Security", "Trusted Execution", "Side-Channel Analysis", "IoT Security"],
+  "joined": "2022-01-15",
+  "sortOrder": 4
+}

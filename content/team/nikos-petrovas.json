@@ -1,0 +1,16 @@
+{
+  "id": "nikos-petrovas",
+  "slug": "nikos-petrovas",
+  "name": "Nikos Petrovas",
+  "role": "Alumni",
+  "bio": "Nikos was a Research Assistant at CPSSec, where he worked on hardware-in-the-loop simulation environments for cyber range exercises. He developed the initial architecture for the PowerRanger smart grid testbed. He is currently a Security Engineer at a major European energy utility.",
+  "shortBio": "Alumni — now Security Engineer in the energy sector.",
+  "avatarUrl": "/images/team/nikos-petrovas.jpg",
+  "socials": {
+    "github": "npetrovas",
+    "linkedin": "nikos-petrovas"
+  },
+  "researchInterests": ["Smart Grid Security", "Hardware-in-the-Loop", "Cyber Ranges", "ICS/OT Security"],
+  "joined": "2019-06-01",
+  "sortOrder": 10
+}

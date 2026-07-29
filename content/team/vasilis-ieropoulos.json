@@ -1,0 +1,21 @@
+{
+  "id": "vasilis-ieropoulos",
+  "slug": "vasilis-ieropoulos",
+  "name": "Vasilis Ieropoulos",
+  "role": "Lab Director",
+  "bio": "Dr. Vasilis Ieropoulos is the Director of the Cyber-Physical Systems Security Lab. His research focuses on securing critical infrastructure including power grids, industrial control systems, and IoT ecosystems. He has over 15 years of experience in cybersecurity research and has led numerous industry-academia collaborative projects in OT security, cyber ranges, and formal verification of safety-critical systems.",
+  "shortBio": "Lab Director specializing in critical infrastructure and ICS/OT security.",
+  "avatarUrl": "/images/team/vasilis-ieropoulos.jpg",
+  "socials": {
+    "email": "vasilis@cpssec.org",
+    "github": "vieropoulos",
+    "linkedin": "vasilis-ieropoulos",
+    "googleScholar": "https://scholar.google.com/citations?user=xxxxx",
+    "orcid": "0000-0002-1234-5678"
+  },
+  "researchInterests": ["ICS/OT Security", "Smart Grid Security", "Formal Methods", "Cyber Ranges", "Critical Infrastructure Protection"],
+  "scholarId": "xxxxx",
+  "orcidId": "0000-0002-1234-5678",
+  "joined": "2018-09-01",
+  "sortOrder": 1
+}

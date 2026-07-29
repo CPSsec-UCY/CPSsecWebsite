@@ -1,0 +1,19 @@
+{
+  "id": "dimitris-papadopoulos",
+  "slug": "dimitris-papadopoulos",
+  "name": "Dimitris Papadopoulos",
+  "role": "PhD Candidate",
+  "bio": "Dimitris is a PhD candidate investigating security challenges in software-defined networking for smart grid communications. His research explores intrusion-tolerant control architectures and secure multicast protocols for wide-area monitoring and control systems. He has contributed to the development of the PowerRanger cyber range platform.",
+  "shortBio": "PhD candidate researching SDN security for smart grid communications.",
+  "avatarUrl": "/images/team/dimitris-papadopoulos.jpg",
+  "socials": {
+    "email": "dimitris@cpssec.org",
+    "github": "dpapadopoulos",
+    "linkedin": "dimitris-papadopoulos",
+    "googleScholar": "https://scholar.google.com/citations?user=zzzzz"
+  },
+  "researchInterests": ["Smart Grid Security", "Software-Defined Networking", "Secure Communications", "Cyber Ranges"],
+  "scholarId": "zzzzz",
+  "joined": "2021-10-01",
+  "sortOrder": 3
+}
