@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { p } from "@/lib/base";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -51,7 +52,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-cyber-500/10 bg-slate-950/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <a href="/" className="flex items-center gap-2 group">
+        <a href={p("/")} className="flex items-center gap-2 group">
           <div className="h-8 w-8 rounded-lg bg-cyber-500/20 border border-cyber-500/30 flex items-center justify-center group-hover:bg-cyber-500/30 transition-colors">
             <span className="text-cyber-400 font-mono text-sm font-bold">&lt;/&gt;</span>
           </div>
@@ -79,7 +80,7 @@ function Header() {
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
-      href={href}
+      href={p(href)}
       className="rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-400 hover:text-cyber-300 hover:bg-cyber-500/10 transition-all duration-200"
     >
       {children}

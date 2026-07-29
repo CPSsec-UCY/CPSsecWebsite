@@ -1,6 +1,7 @@
 import { Shield, Cpu, BookOpen, Users, Database, Network, ArrowRight } from "lucide-react";
 import { getAllPublications } from "@/lib/publications";
 import { getAllTeamMembers } from "@/lib/team";
+import { p } from "@/lib/base";
 import PublicationCard from "@/components/PublicationCard";
 import TeamMemberCard from "@/components/TeamMemberCard";
 
@@ -50,14 +51,14 @@ function HeroSection() {
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <a
-              href="/publications"
+              href={p("/publications")}
               className="inline-flex items-center gap-2 rounded-lg bg-cyber-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-cyber-400 transition-colors"
             >
               <BookOpen className="h-4 w-4" />
               Browse Publications
             </a>
             <a
-              href="/team"
+              href={p("/team")}
               className="inline-flex items-center gap-2 rounded-lg border border-cyber-500/30 px-4 py-2.5 text-sm font-semibold text-cyber-300 hover:bg-cyber-500/10 transition-colors"
             >
               <Users className="h-4 w-4" />
@@ -110,7 +111,7 @@ function SelectedPublications({ publications }: { publications: any[] }) {
             </p>
           </div>
           <a
-            href="/publications"
+            href={p("/publications")}
             className="hidden sm:inline-flex items-center gap-1 text-sm text-cyber-400 hover:text-cyber-300 transition-colors"
           >
             View All <ArrowRight className="h-3.5 w-3.5" />
@@ -124,7 +125,7 @@ function SelectedPublications({ publications }: { publications: any[] }) {
         </div>
 
         <a
-          href="/publications"
+          href={p("/publications")}
           className="mt-6 inline-flex sm:hidden items-center gap-1 text-sm text-cyber-400 hover:text-cyber-300 transition-colors"
         >
           View All Publications <ArrowRight className="h-3.5 w-3.5" />
@@ -144,7 +145,7 @@ function TeamSpotlight({ members }: { members: any[] }) {
             <p className="mt-1 text-sm text-slate-500">Meet our researchers</p>
           </div>
           <a
-            href="/team"
+            href={p("/team")}
             className="hidden sm:inline-flex items-center gap-1 text-sm text-cyber-400 hover:text-cyber-300 transition-colors"
           >
             Meet Everyone <ArrowRight className="h-3.5 w-3.5" />
@@ -158,7 +159,7 @@ function TeamSpotlight({ members }: { members: any[] }) {
         </div>
 
         <a
-          href="/team"
+          href={p("/team")}
           className="mt-6 inline-flex sm:hidden items-center gap-1 text-sm text-cyber-400 hover:text-cyber-300 transition-colors"
         >
           Meet Everyone <ArrowRight className="h-3.5 w-3.5" />
@@ -180,7 +181,7 @@ function PlatformsPreview() {
             </p>
           </div>
           <a
-            href="/platforms"
+            href={p("/platforms")}
             className="hidden sm:inline-flex items-center gap-1 text-sm text-cyber-400 hover:text-cyber-300 transition-colors"
           >
             Explore Platforms <ArrowRight className="h-3.5 w-3.5" />
@@ -211,7 +212,7 @@ function PlatformsPreview() {
         </div>
 
         <a
-          href="/platforms"
+          href={p("/platforms")}
           className="mt-6 inline-flex sm:hidden items-center gap-1 text-sm text-cyber-400 hover:text-cyber-300 transition-colors"
         >
           Explore Platforms <ArrowRight className="h-3.5 w-3.5" />

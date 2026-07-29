@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getAllTeamMembers, getTeamMemberBySlug } from "@/lib/team";
 import { getPublicationsBySlug } from "@/lib/publications";
+import { p } from "@/lib/base";
 import PublicationCard from "@/components/PublicationCard";
 import { Github, Linkedin, Mail, GraduationCap, ExternalLink, ArrowLeft, BookOpen } from "lucide-react";
 
@@ -18,7 +19,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <a
-        href="/team"
+        href={p("/team")}
         className="mb-6 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-cyber-400 transition-colors"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
@@ -30,7 +31,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
           <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-900">
             {member.avatarUrl ? (
               <img
-                src={member.avatarUrl}
+                src={p(member.avatarUrl)}
                 alt={member.name}
                 className="h-full w-full object-cover"
               />

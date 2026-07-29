@@ -1,4 +1,5 @@
 import type { TeamMember } from "@/types/team";
+import { p } from "@/lib/base";
 import { Github, Linkedin, Mail, ExternalLink, GraduationCap } from "lucide-react";
 
 interface Props {
@@ -8,14 +9,14 @@ interface Props {
 export default function TeamMemberCard({ member }: Props) {
   return (
     <a
-      href={`/team/${member.slug}`}
+      href={p(`/team/${member.slug}`)}
       className="group block rounded-xl border border-cyber-500/10 bg-slate-900/50 p-5 transition-all duration-300 hover:border-cyber-500/30 hover:bg-slate-900/80 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)]"
     >
       <div className="flex items-start gap-4">
         <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-900">
           {member.avatarUrl ? (
             <img
-              src={member.avatarUrl}
+              src={p(member.avatarUrl)}
               alt={member.name}
               className="h-full w-full object-cover"
               loading="lazy"
