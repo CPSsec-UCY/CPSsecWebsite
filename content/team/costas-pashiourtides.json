@@ -1,0 +1,15 @@
+{
+  "id": "costas-pashiourtides",
+  "slug": "costas-pashiourtides",
+  "name": "Costas Pashiourtides",
+  "role": "PhD Candidate",
+  "bio": "Costas Pashiourtides received his Bachelor's degree in Computer Engineering with a minor in Philosophy from the University of Cyprus in 2024. Since September 2023, he has been working as an intern at KIOS, where he initially focused on sound source localization and classification of UAVs. He is currently a PhD Student at the Department of Electrical and Computer Engineering at the University of Cyprus, carrying out his research at KIOS CoE. His PhD research centers on vulnerability discovery in PLCs and OT equipment, with an emphasis on developing methodologies to assess the potential risk of zero-day exploits in operational technology environments.",
+  "shortBio": "PhD student researching vulnerability discovery in PLCs and zero-day exploits in OT environments.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/costas-pashiourtides-intern-qcanlp62cnp4qk56yn0dd5hbln46tkdhvv3r4bunnc.jpg",
+  "socials": {
+    "email": "cpashi01@ucy.ac.cy"
+  },
+  "researchInterests": ["PLC Security", "OT Vulnerability Discovery", "Zero-Day Exploits", "Cyber-Physical Systems Security", "Embedded Systems Security"],
+  "joined": "2024-09-01",
+  "sortOrder": 7
+}

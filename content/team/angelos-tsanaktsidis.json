@@ -1,0 +1,15 @@
+{
+  "id": "angelos-tsanaktsidis",
+  "slug": "angelos-tsanaktsidis",
+  "name": "Angelos Tsanaktsidis",
+  "role": "PhD Candidate",
+  "bio": "Angelos Tsanaktsidis is a PhD Student in the Department of Electrical and Computer Engineering at the University of Cyprus, undertaking his research at the KIOS Research and Innovation Center of Excellence. His work focuses on post-quantum cryptography for resource-constrained embedded systems, including the design of a cross-architecture PQC benchmarking framework under Zephyr RTOS. He holds a Bachelor's degree in Computer Engineering from the University of Cyprus and has experience as a Research Intern at KIOS CoE and as CIO at E-mbracelet.",
+  "shortBio": "PhD student researching post-quantum cryptography for resource-constrained embedded systems.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/Angelos-tsanaktsides-r8xndwtc0dfq9xhqzg8apcato84ny6whdixh96nq60.jpg",
+  "socials": {
+    "linkedin": "a-tsanak"
+  },
+  "researchInterests": ["Post-Quantum Cryptography", "Embedded Systems", "Zephyr RTOS", "ARM TrustZone", "IoT Security"],
+  "joined": "2025-09-01",
+  "sortOrder": 8
+}

@@ -1,0 +1,15 @@
+{
+  "id": "michael-photiades",
+  "slug": "michael-photiades",
+  "name": "Michael Photiades",
+  "role": "PhD Candidate",
+  "bio": "Michael Photiades received his Bachelor's degree in Computer Engineering from the University of Cyprus in 2025. Since January 2024, he has been an Intern at the KIOS Research and Innovation Center of Excellence, conducting cybersecurity research on botnet analysis and risk profiling, and contributing to the EU Horizon COCOON project. He is currently a PhD Student in the Department of Electrical and Computer Engineering at the University of Cyprus, undertaking his research at KIOS CoE. His research focuses on analysing adversarial infrastructure, fraud ecosystems, and IoT botnet operations, as well as developing practical solutions for threat intelligence, threat profiling, and cyber risk assessment. He has published peer-reviewed work in IEEE.",
+  "shortBio": "PhD student researching adversarial infrastructure, IoT botnets, and threat intelligence.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/michael-photiades-qj2gnrtzbyduqs67ao5o6p13c94h0ojnybr3g7xxdk.jpg",
+  "socials": {
+    "linkedin": "michael-photiades-50924a230"
+  },
+  "researchInterests": ["IoT Botnets", "Threat Intelligence", "Cyber Risk Assessment", "Adversarial Infrastructure", "Machine Learning for Security"],
+  "joined": "2025-09-01",
+  "sortOrder": 9
+}

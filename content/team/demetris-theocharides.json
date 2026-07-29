@@ -1,0 +1,15 @@
+{
+  "id": "demetris-theocharides",
+  "slug": "demetris-theocharides",
+  "name": "Demetris Theocharides",
+  "role": "Software Engineer",
+  "bio": "Demetris Theocharides received his BSc in Information Technology from the Alexander Technological Educational Institute of Thessaloniki. With over 4 years of experience as a Software Developer, he has worked as a Frontend Developer at Amdocs Optima and as an Implementation Analyst at Jenus Technologies. He is currently a Software Engineer I at the KIOS Research and Innovation Center of Excellence, where he contributes to the development and maintenance of research software platforms.",
+  "shortBio": "Software Engineer developing research platforms at KIOS CoE.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/Demetris-theocharides-qlvbewfig0l7auryh1nr4pg4lsbu01s6ujjt6h6iwo.jpg",
+  "socials": {
+    "linkedin": "demetris-theocharides"
+  },
+  "researchInterests": ["Software Engineering", "Web Development", "Emerging Technologies"],
+  "joined": "2024-03-01",
+  "sortOrder": 5
+}
