@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
 import { p } from "@/lib/base";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
 
 export const metadata: Metadata = {
   title: "CPSSec | Cyber-Physical Systems Security Lab",
@@ -37,9 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.variable} ${jetbrains.variable} font-sans scanline min-h-screen`}
-      >
+      <body className="font-sans scanline min-h-screen">
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
@@ -115,25 +106,27 @@ function Footer() {
               href="https://www.ucy.ac.cy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-slate-200 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-slate-200 transition-colors hover:text-white"
             >
-              <svg viewBox="0 0 40 40" className="h-6 w-6 shrink-0" fill="none">
-                <rect width="40" height="40" rx="8" className="fill-slate-700" />
-                <text x="20" y="24" textAnchor="middle" className="fill-cyber-400 text-[14px] font-bold" fontFamily="system-ui">UCY</text>
-              </svg>
-              <span>University of Cyprus</span>
+              <img
+                src="/logos/ucy-logo.svg"
+                alt="University of Cyprus logo"
+                className="h-8 w-28 shrink-0 rounded-md object-contain"
+              />
+              <span className="sr-only">University of Cyprus</span>
             </a>
             <a
               href="https://www.kios.ucy.ac.cy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-slate-200 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-slate-200 transition-colors hover:text-white"
             >
-              <svg viewBox="0 0 40 40" className="h-6 w-6 shrink-0" fill="none">
-                <rect width="40" height="40" rx="8" className="fill-slate-700" />
-                <text x="20" y="24" textAnchor="middle" className="fill-cyber-400 text-[11px] font-bold" fontFamily="system-ui">KIOS</text>
-              </svg>
-              <span>KIOS Centre of Excellence</span>
+              <img
+                src="/logos/kios-logo.svg"
+                alt="KIOS Centre of Excellence logo"
+                className="h-8 w-28 shrink-0 rounded-md object-contain"
+              />
+              <span className="sr-only">KIOS Centre of Excellence</span>
             </a>
           </div>
 

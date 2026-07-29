@@ -113,8 +113,8 @@ export default function AboutPage() {
             cyber-physical systems security. Through KIOS, CPSSec researchers gain access to
             extensive testbed infrastructure (including power system simulators, water distribution
             testbeds, and hardware-in-the-loop platforms), collaboration with over 50 industry
-            and academic partners, and participation in large-scale EU Horizon projects such as
-            COCOON, CITADEL Range, and ELECTRON.
+            and academic partners, and participation in European initiatives such as ACTING,
+            CITADEL Range, COCOON, and FOCAL.
           </p>
         </div>
       </section>

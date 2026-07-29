@@ -1,4 +1,4 @@
-import { Shield, Cpu, BookOpen, Users, Database, Network, ArrowRight } from "lucide-react";
+import { Shield, Cpu, BookOpen, Users, Database, Network, ArrowRight, ExternalLink } from "lucide-react";
 import { getAllPublications } from "@/lib/publications";
 import { getAllTeamMembers } from "@/lib/team";
 import { p } from "@/lib/base";
@@ -15,6 +15,7 @@ export default function HomePage() {
       <StatsBanner />
       <SelectedPublications publications={publications} />
       <TeamSpotlight members={members} />
+      <FeaturedProjects />
       <PlatformsPreview />
     </>
   );
@@ -174,6 +175,89 @@ function TeamSpotlight({ members }: { members: any[] }) {
   );
 }
 
+function FeaturedProjects() {
+  return (
+    <section className="border-b border-slate-800">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+          <div>
+            <h2 className="section-title">Featured Research Initiatives</h2>
+            <p className="section-subtitle">
+              Selected European and KIOS-led projects shaping cyber-physical systems security
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-2">
+          {projects.map((project, i) => (
+            <div
+              key={project.name}
+              className="card-hover p-5 animate-fade-in-up"
+              style={{ animationDelay: `${200 + i * 80}ms` }}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-sm font-semibold text-white">{project.name}</h3>
+                  <p className="mt-2 text-sm text-slate-300 leading-relaxed">{project.description}</p>
+                </div>
+                <div className="rounded-lg border border-slate-700/50 bg-slate-800/60 p-2">
+                  <BookOpen className="h-4 w-4 text-cyber-400" />
+                </div>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tag-cyan">{tag}</span>
+                ))}
+              </div>
+
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1 text-sm text-cyber-400 hover:text-cyber-300 transition-colors"
+              >
+                Visit project site <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const projects = [
+  {
+    name: "ACTING",
+    description:
+      "A European initiative advancing interoperable cyber-training and exercise capabilities for proactive cyber defence across connected operational environments.",
+    tags: ["Cyber Training", "EU Project", "Exercise Networks"],
+    link: "https://acting-project.eu/",
+  },
+  {
+    name: "CITADEL Range",
+    description:
+      "An EU defence-focused cyber range programme creating interoperable tools and frameworks to improve advanced training and preparedness for military cyber operations.",
+    tags: ["Cyber Range", "Defence", "EU Research"],
+    link: "https://www.kios.ucy.ac.cy/projects_kios/citadel-range-cyber-infrastructure-for-training-in-advanced-defence-exercises-and-learning/",
+  },
+  {
+    name: "COCOON",
+    description:
+      "A Horizon Europe project strengthening the resilience of modern power grids through cooperative cyber-physical protection and real-world pilot demonstrations.",
+    tags: ["Energy Systems", "Resilience", "Horizon Europe"],
+    link: "https://www.cyber-cocoon.eu/",
+  },
+  {
+    name: "FOCAL",
+    description:
+      "A post-quantum cryptography project developing practical, interoperable PQC frameworks for edge and critical infrastructure environments.",
+    tags: ["Post-Quantum", "Cryptography", "Critical Infrastructure"],
+    link: "https://www.focal-pqc.eu/",
+  },
+];
+
 function PlatformsPreview() {
   return (
     <section>
@@ -182,7 +266,7 @@ function PlatformsPreview() {
           <div>
             <h2 className="section-title">Platforms &amp; Testbeds</h2>
             <p className="section-subtitle">
-              Hardware and software cyber ranges
+              Active infrastructure for research, training, and experimentation
             </p>
           </div>
           <a
@@ -225,24 +309,24 @@ function PlatformsPreview() {
 
 const platforms = [
   {
-    name: "PowerRanger",
+    name: "Cyber Range",
     icon: Network,
     description:
-      "Open-source smart grid cyber range with hardware-in-the-loop simulation and real IEC 61850 communications.",
-    tags: ["Smart Grid", "HIL", "IEC 61850"],
+      "A flexible environment for running realistic cyber-physical exercises and attack-defense scenarios for training and research.",
+    tags: ["Cyber Range", "Training", "Exercises"],
   },
   {
-    name: "ICS Honeynet",
+    name: "ICS Testbed",
     icon: Shield,
     description:
-      "Distributed high-interaction honeypot network emulating PLCs, RTUs, and HMIs across multiple vendor protocols.",
-    tags: ["ICS/OT", "Honeypot", "Threat Intel"],
+      "A dedicated industrial control systems environment for evaluating OT security, monitoring, and stealthy attack detection research.",
+    tags: ["ICS/OT", "Industrial Control", "Security"],
   },
   {
-    name: "Firmware Analysis Rig",
+    name: "IoT Testbed",
     icon: Cpu,
     description:
-      "Automated firmware extraction, emulation, and vulnerability discovery pipeline for embedded CPS devices.",
-    tags: ["Embedded", "Firmware", "TEE"],
+      "An IoT-focused environment for evaluating embedded devices, protocols, and lightweight security mechanisms in constrained settings.",
+    tags: ["IoT", "Embedded", "Security"],
   },
 ];
