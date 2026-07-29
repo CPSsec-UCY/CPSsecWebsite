@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-900 text-slate-300 antialiased;
+    @apply bg-slate-900 text-slate-200 antialiased;
   }
 
   ::selection {
@@ -14,7 +14,7 @@
 
 @layer components {
   .card {
-    @apply rounded-xl border border-slate-700/50 bg-slate-800/60;
+    @apply rounded-xl border border-slate-700/60 bg-slate-800/70;
   }
 
   .card-hover {
@@ -30,7 +30,7 @@
   }
 
   .section-subtitle {
-    @apply mt-1 text-sm text-slate-400;
+    @apply mt-1 text-sm text-slate-300;
   }
 
   .tag-cyan {

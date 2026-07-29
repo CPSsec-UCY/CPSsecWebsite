@@ -20,7 +20,7 @@ export default function PlatformsPage() {
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           Platforms &amp; Testbeds
         </h1>
-        <p className="mt-2 text-slate-400 max-w-2xl">
+        <p className="mt-2 text-slate-300 max-w-2xl">
           Our lab operates a range of hardware and software cyber ranges for
           security research, education, and training in cyber-physical systems.
         </p>
@@ -42,7 +42,7 @@ export default function PlatformsPage() {
                   <h2 className="text-lg font-semibold text-white group-hover:text-cyber-300 transition-colors">
                     {platform.name}
                   </h2>
-                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+                  <p className="mt-2 text-sm text-slate-300 leading-relaxed">
                     {platform.description}
                   </p>
 
@@ -53,14 +53,14 @@ export default function PlatformsPage() {
                   </div>
 
                   <div className="mt-4 space-y-2">
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                       Features
                     </h4>
                     <ul className="space-y-1">
                       {platform.features.map((f) => (
                         <li
                           key={f}
-                          className="flex items-start gap-2 text-xs text-slate-400"
+                          className="flex items-start gap-2 text-xs text-slate-300"
                         >
                           <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-cyber-500" />
                           {f}
@@ -88,7 +88,7 @@ export default function PlatformsPage() {
         <h3 className="text-sm font-semibold text-white">
           Interested in collaborating or using our testbeds?
         </h3>
-        <p className="mt-1 text-xs text-slate-400">
+        <p className="mt-1 text-xs text-slate-300">
           We welcome academic and industry partners. Contact us to discuss
           access to our platforms for research, education, or training purposes.
         </p>

@@ -15,7 +15,7 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold text-white mb-4">
           Cyber-Physical Systems Security Lab
         </h2>
-        <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
+        <div className="space-y-4 text-sm text-slate-200 leading-relaxed">
           <p>
             The <strong className="text-white">Cyber-Physical Systems Security Lab (CPSSec)</strong> is a
             research laboratory within the Department of Electrical and Computer Engineering at
@@ -60,7 +60,7 @@ export default function AboutPage() {
             </a>
           </div>
         </div>
-        <p className="text-sm text-slate-300 leading-relaxed">
+        <p className="text-sm text-slate-200 leading-relaxed">
           The <strong className="text-white">University of Cyprus (UCY)</strong> is the flagship
           research university of the Republic of Cyprus, consistently ranked among the top
           institutions in the Eastern Mediterranean region. Founded in 1989, UCY has grown into
@@ -91,7 +91,7 @@ export default function AboutPage() {
             </a>
           </div>
         </div>
-        <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
+        <div className="space-y-4 text-sm text-slate-200 leading-relaxed">
           <p>
             The <strong className="text-white">KIOS Research and Innovation Centre of Excellence</strong>
             is a world-class interdisciplinary research centre hosted by the University of Cyprus, with
@@ -141,7 +141,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-white">{theme.title}</h3>
-                    <p className="mt-1 text-xs text-slate-400 leading-relaxed">
+                    <p className="mt-1 text-xs text-slate-300 leading-relaxed">
                       {theme.description}
                     </p>
                   </div>

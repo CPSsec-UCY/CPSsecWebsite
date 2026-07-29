@@ -25,7 +25,7 @@ export default function TeamPage() {
           <span className="badge-label">Our People</span>
         </div>
         <h1 className="text-3xl font-bold text-white sm:text-4xl">Team</h1>
-        <p className="mt-2 text-slate-400 max-w-2xl">
+        <p className="mt-2 text-slate-300 max-w-2xl">
           Our interdisciplinary team brings together expertise in cybersecurity,
           control systems, critical infrastructure protection, and embedded systems.
         </p>

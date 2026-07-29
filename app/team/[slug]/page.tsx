@@ -20,7 +20,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <a
         href={p("/team")}
-        className="mb-6 inline-flex items-center gap-1 text-xs text-slate-500 hover:text-cyber-400 transition-colors"
+        className="mb-6 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyber-400 transition-colors"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         Back to Team
@@ -48,10 +48,10 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                 {member.name}
               </h1>
               <p className="text-sm font-medium text-cyber-400">{member.role}</p>
-              <p className="text-xs text-slate-400">Joined {member.joined}</p>
+              <p className="text-xs text-slate-300">Joined {member.joined}</p>
             </div>
 
-            <p className="mt-4 text-sm text-slate-300 leading-relaxed">
+            <p className="mt-4 text-sm text-slate-200 leading-relaxed">
               {member.bio}
             </p>
 
@@ -67,7 +67,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={`https://github.com/${member.socials.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-cyber-400 transition-colors"
+                  className="text-slate-300 hover:text-cyber-400 transition-colors"
                   aria-label="GitHub"
                 >
                   <Github className="h-4 w-4" />
@@ -78,7 +78,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={`https://linkedin.com/in/${member.socials.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-cyber-400 transition-colors"
+                  className="text-slate-300 hover:text-cyber-400 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-4 w-4" />
@@ -87,7 +87,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
               {member.socials.email && (
                 <a
                   href={`mailto:${member.socials.email}`}
-                  className="text-slate-400 hover:text-cyber-400 transition-colors"
+                  className="text-slate-300 hover:text-cyber-400 transition-colors"
                   aria-label="Email"
                 >
                   <Mail className="h-4 w-4" />
@@ -98,7 +98,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={member.socials.googleScholar}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-cyber-400 transition-colors"
+                  className="text-slate-300 hover:text-cyber-400 transition-colors"
                   aria-label="Google Scholar"
                 >
                   <GraduationCap className="h-4 w-4" />
@@ -109,7 +109,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={`https://orcid.org/${member.socials.orcid}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-cyber-400 transition-colors"
+                  className="text-slate-300 hover:text-cyber-400 transition-colors"
                   aria-label="ORCID"
                 >
                   <span className="text-[10px] font-bold font-mono">ORCID</span>
@@ -120,7 +120,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={member.socials.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-cyber-400 transition-colors"
+                  className="text-slate-300 hover:text-cyber-400 transition-colors"
                   aria-label="Website"
                 >
                   <ExternalLink className="h-4 w-4" />
@@ -135,12 +135,12 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
         <div className="mb-6 flex items-center gap-2">
           <BookOpen className="h-4 w-4 text-cyber-400" />
           <h2 className="text-lg font-semibold text-white">Publications</h2>
-          <span className="text-xs text-slate-500">({publications.length})</span>
+          <span className="text-xs text-slate-400">({publications.length})</span>
         </div>
 
         {publications.length === 0 ? (
           <div className="rounded-xl border border-dashed border-slate-700 p-12 text-center">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-400">
               No publications indexed yet for this member.
             </p>
           </div>

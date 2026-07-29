@@ -34,11 +34,11 @@ export default function TeamMemberCard({ member }: Props) {
           <p className="mt-0.5 text-xs font-medium text-cyber-400">
             {member.role}
           </p>
-          <p className="mt-1.5 text-xs text-slate-400 line-clamp-2 leading-relaxed">
+          <p className="mt-1.5 text-xs text-slate-300 line-clamp-2 leading-relaxed">
             {member.shortBio}
           </p>
         </div>
-        <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-slate-500 group-hover:text-cyber-400 transition-colors" />
+        <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-slate-400 group-hover:text-cyber-400 transition-colors" />
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
@@ -48,7 +48,7 @@ export default function TeamMemberCard({ member }: Props) {
           </span>
         ))}
         {member.researchInterests.length > 3 && (
-          <span className="rounded-full bg-slate-700/50 px-2 py-0.5 text-[10px] text-slate-400">
+          <span className="rounded-full bg-slate-700/50 px-2 py-0.5 text-[10px] text-slate-300">
             +{member.researchInterests.length - 3}
           </span>
         )}
@@ -56,22 +56,22 @@ export default function TeamMemberCard({ member }: Props) {
 
       <div className="mt-3 flex items-center gap-2 border-t border-slate-700/50 pt-3">
         {member.socials.github && (
-          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="GitHub">
+          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="GitHub">
             <Github className="h-3.5 w-3.5" />
           </span>
         )}
         {member.socials.linkedin && (
-          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="LinkedIn">
+          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="LinkedIn">
             <Linkedin className="h-3.5 w-3.5" />
           </span>
         )}
         {member.socials.email && (
-          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="Email">
+          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="Email">
             <Mail className="h-3.5 w-3.5" />
           </span>
         )}
         {member.socials.googleScholar && (
-          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="Google Scholar">
+          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="Google Scholar">
             <GraduationCap className="h-3.5 w-3.5" />
           </span>
         )}

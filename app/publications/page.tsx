@@ -15,7 +15,7 @@ export default function PublicationsPage() {
           <span className="badge-label">Research Output</span>
         </div>
         <h1 className="text-3xl font-bold text-white sm:text-4xl">Publications</h1>
-        <p className="mt-2 text-slate-400">
+        <p className="mt-2 text-slate-300">
           Peer-reviewed papers, conference proceedings, and preprints from the lab.
         </p>
       </div>

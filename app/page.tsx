@@ -43,7 +43,7 @@ function HeroSection() {
             </span>
           </h1>
 
-          <p className="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg max-w-2xl mx-auto">
+          <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg max-w-2xl mx-auto">
             CPSSec advances the security and resilience of cyber-physical systems
             through cutting-edge research in ICS/OT security, smart grid protection,
             IoT security, and cyber range technologies.
@@ -90,7 +90,7 @@ function StatsBanner() {
             >
               <stat.icon className="mx-auto h-5 w-5 text-cyber-400" />
               <p className="mt-2 text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-xs text-slate-400">{stat.label}</p>
+              <p className="text-xs text-slate-300">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -196,7 +196,7 @@ function PlatformsPreview() {
             >
               <p.icon className="h-5 w-5 text-cyber-400" />
               <h3 className="mt-3 text-sm font-semibold text-white">{p.name}</h3>
-              <p className="mt-1 text-xs text-slate-400">{p.description}</p>
+              <p className="mt-1 text-xs text-slate-300">{p.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {p.tags.map((t) => (
                   <span key={t} className="tag-cyan">{t}</span>
