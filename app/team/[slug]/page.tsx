@@ -20,13 +20,13 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
       <a
         href={p("/team")}
-        className="mb-6 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyber-400 transition-colors"
+        className="mb-6 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyber-400 transition-colors animate-fade-in-up"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         Back to Team
       </a>
 
-      <div className="card p-6 sm:p-8">
+      <div className="card p-6 sm:p-8 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
           <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800">
             {member.avatarUrl ? (
@@ -131,7 +131,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
         </div>
       </div>
 
-      <section className="mt-10">
+      <section className="mt-10 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
         <div className="mb-6 flex items-center gap-2">
           <BookOpen className="h-4 w-4 text-cyber-400" />
           <h2 className="text-lg font-semibold text-white">Publications</h2>
@@ -146,8 +146,10 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
           </div>
         ) : (
           <div className="space-y-3">
-            {publications.map((pub) => (
-              <PublicationCard key={pub.id} publication={pub} showAbstract />
+            {publications.map((pub, i) => (
+              <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 60}ms` }}>
+                <PublicationCard publication={pub} showAbstract />
+              </div>
             ))}
           </div>
         )}

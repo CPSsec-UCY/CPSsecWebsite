@@ -2,19 +2,31 @@
 
 import { useState, useMemo } from "react";
 import type { Publication, ResearchDomain } from "@/types/publication";
+import type { PublicationType } from "@/types/publication";
 import PublicationCard from "./PublicationCard";
-import { Search, Filter, X } from "lucide-react";
+import { Search, Filter, X, ArrowUpDown } from "lucide-react";
 
 interface Props {
   publications: Publication[];
   teamMembers: { slug: string; name: string }[];
 }
 
+type SortKey = "newest" | "oldest" | "type" | "title";
+
+const typeOrder: Record<PublicationType, number> = {
+  journal: 0,
+  conference: 1,
+  workshop: 2,
+  preprint: 3,
+  thesis: 4,
+};
+
 export default function PublicationsList({ publications, teamMembers }: Props) {
   const [search, setSearch] = useState("");
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedDomain, setSelectedDomain] = useState<ResearchDomain | null>(null);
   const [selectedAuthor, setSelectedAuthor] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState<SortKey>("newest");
 
   const years = useMemo(() => {
     const y = new Set(publications.map((p) => p.year));
@@ -28,7 +40,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
   }, [publications]);
 
   const filtered = useMemo(() => {
-    return publications.filter((p) => {
+    let result = publications.filter((p) => {
       if (search) {
         const q = search.toLowerCase();
         const inTitle = p.title.toLowerCase().includes(q);
@@ -42,7 +54,24 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
       if (selectedAuthor !== null && !p.authorSlugs.includes(selectedAuthor)) return false;
       return true;
     });
-  }, [publications, search, selectedYear, selectedDomain, selectedAuthor]);
+
+    result.sort((a, b) => {
+      switch (sortBy) {
+        case "newest":
+          return b.year - a.year || a.title.localeCompare(b.title);
+        case "oldest":
+          return a.year - b.year || a.title.localeCompare(b.title);
+        case "type":
+          return typeOrder[a.type] - typeOrder[b.type] || b.year - a.year;
+        case "title":
+          return a.title.localeCompare(b.title);
+        default:
+          return 0;
+      }
+    });
+
+    return result;
+  }, [publications, search, selectedYear, selectedDomain, selectedAuthor, sortBy]);
 
   const hasFilters = search || selectedYear !== null || selectedDomain !== null || selectedAuthor !== null;
 
@@ -114,6 +143,20 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
             </button>
           )}
         </div>
+
+        <div className="flex flex-wrap items-center gap-2">
+          <ArrowUpDown className="h-3.5 w-3.5 text-slate-400" />
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as SortKey)}
+            className="rounded-md border border-slate-700/50 bg-slate-800/60 px-2.5 py-1.5 text-xs text-slate-200 outline-none focus:border-cyber-500/40"
+          >
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="type">By Type</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </div>
       </div>
 
       {filtered.length === 0 ? (
@@ -122,13 +165,15 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
         </div>
       ) : (
         <div className="space-y-3">
-          {filtered.map((pub) => (
-            <PublicationCard key={pub.id} publication={pub} showAbstract />
+          {filtered.map((pub, i) => (
+            <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 40}ms` }}>
+              <PublicationCard publication={pub} showAbstract />
+            </div>
           ))}
         </div>
       )}
 
-      <p className="mt-4 text-xs text-slate-600">
+      <p className="mt-4 text-xs text-slate-400">
         Showing {filtered.length} of {publications.length} publications
       </p>
     </div>

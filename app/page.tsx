@@ -29,27 +29,27 @@ function HeroSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="badge mb-4">
+          <div className="badge mb-4 animate-fade-in-up">
             <Shield className="h-3.5 w-3.5 text-cyber-400" />
             <span className="badge-label">
               Cyber-Physical Systems Security Research Lab
             </span>
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
             Securing the
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyber-300 to-cyber-500">
               World&apos;s Critical Infrastructure
             </span>
           </h1>
 
-          <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg max-w-2xl mx-auto">
+          <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "200ms" }}>
             CPSSec advances the security and resilience of cyber-physical systems
             through cutting-edge research in ICS/OT security, smart grid protection,
             IoT security, and cyber range technologies.
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
             <a
               href={p("/publications")}
               className="inline-flex items-center gap-2 rounded-lg bg-cyber-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-cyber-400 transition-colors"
@@ -83,10 +83,11 @@ function StatsBanner() {
     <section className="border-b border-slate-800 bg-slate-900/50">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {stats.map((stat) => (
+          {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className="card p-4 text-center"
+              className="card p-4 text-center animate-fade-in-up"
+              style={{ animationDelay: `${400 + i * 80}ms` }}
             >
               <stat.icon className="mx-auto h-5 w-5 text-cyber-400" />
               <p className="mt-2 text-2xl font-bold text-white">{stat.value}</p>
@@ -103,7 +104,7 @@ function SelectedPublications({ publications }: { publications: any[] }) {
   return (
     <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "100ms" }}>
           <div>
             <h2 className="section-title">Selected Publications</h2>
             <p className="section-subtitle">
@@ -119,8 +120,10 @@ function SelectedPublications({ publications }: { publications: any[] }) {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {publications.map((pub) => (
-            <PublicationCard key={pub.id} publication={pub} showAbstract />
+          {publications.map((pub, i) => (
+            <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${200 + i * 80}ms` }}>
+              <PublicationCard publication={pub} showAbstract />
+            </div>
           ))}
         </div>
 
@@ -139,7 +142,7 @@ function TeamSpotlight({ members }: { members: any[] }) {
   return (
     <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "100ms" }}>
           <div>
             <h2 className="section-title">Team Spotlight</h2>
             <p className="section-subtitle">Meet our researchers</p>
@@ -153,8 +156,10 @@ function TeamSpotlight({ members }: { members: any[] }) {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {members.map((member) => (
-            <TeamMemberCard key={member.id} member={member} />
+          {members.map((member, i) => (
+            <div key={member.id} className="animate-fade-in-up" style={{ animationDelay: `${200 + i * 80}ms` }}>
+              <TeamMemberCard member={member} />
+            </div>
           ))}
         </div>
 
@@ -173,7 +178,7 @@ function PlatformsPreview() {
   return (
     <section>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "100ms" }}>
           <div>
             <h2 className="section-title">Platforms &amp; Testbeds</h2>
             <p className="section-subtitle">
@@ -189,10 +194,11 @@ function PlatformsPreview() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {platforms.map((p) => (
+          {platforms.map((p, i) => (
             <div
               key={p.name}
-              className="card-hover p-5"
+              className="card-hover p-5 animate-fade-in-up"
+              style={{ animationDelay: `${200 + i * 80}ms` }}
             >
               <p.icon className="h-5 w-5 text-cyber-400" />
               <h3 className="mt-3 text-sm font-semibold text-white">{p.name}</h3>

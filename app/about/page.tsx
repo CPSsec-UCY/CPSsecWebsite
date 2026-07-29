@@ -11,7 +11,7 @@ export default function AboutPage() {
         <h1 className="text-3xl font-bold text-white sm:text-4xl">About CPSSec</h1>
       </div>
 
-      <section className="card p-6 sm:p-8 mb-10">
+      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
         <h2 className="text-xl font-semibold text-white mb-4">
           Cyber-Physical Systems Security Lab
         </h2>
@@ -41,7 +41,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="card p-6 sm:p-8 mb-10">
+      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
         <div className="flex items-start gap-4 mb-4">
           <div className="badge-icon">
             <GraduationCap className="h-5 w-5 text-cyber-400" />
@@ -72,7 +72,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <section className="card p-6 sm:p-8 mb-10">
+      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
         <div className="flex items-start gap-4 mb-4">
           <div className="badge-icon">
             <Building className="h-5 w-5 text-cyber-400" />
@@ -119,7 +119,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="card p-6 sm:p-8">
+      <section className="card p-6 sm:p-8 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
         <div className="flex items-start gap-4 mb-4">
           <div className="badge-icon">
             <Server className="h-5 w-5 text-cyber-400" />

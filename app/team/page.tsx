@@ -37,8 +37,10 @@ export default function TeamPage() {
           <section key={role} className="mb-12">
             <h2 className="mb-4 text-lg font-semibold text-cyber-300">{role}</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {groups[role].map((member) => (
-                <TeamMemberCard key={member.id} member={member} />
+              {groups[role].map((member, i) => (
+                <div key={member.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 50}ms` }}>
+                  <TeamMemberCard member={member} />
+                </div>
               ))}
             </div>
           </section>
