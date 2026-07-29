@@ -8,31 +8,30 @@ interface Props {
   showAbstract?: boolean;
 }
 
+const yearBadge: Record<string, string> = {
+  "2026": "badge-year bg-amber-500/15 text-amber-300 border-amber-500/25",
+  "2025": "badge-year bg-emerald-500/15 text-emerald-300 border-emerald-500/25",
+  "2024": "badge-year bg-cyber-500/15 text-cyber-300 border-cyber-500/25",
+};
+const fallbackYear = "badge-year bg-slate-600/30 text-slate-300 border-slate-500/30";
+
+const typeBadge: Record<string, string> = {
+  conference: "badge-type bg-amber-500/10 text-amber-300 border-amber-500/20",
+  journal: "badge-type bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
+  workshop: "badge-type bg-rose-500/10 text-rose-300 border-rose-500/20",
+  preprint: "badge-type bg-slate-500/15 text-slate-300 border-slate-500/20",
+};
+
 export default function PublicationCard({ publication, showAbstract = false }: Props) {
-  const yearColors: Record<string, string> = {
-    "2024": "bg-cyber-500/20 text-cyber-300 border-cyber-500/30",
-    "2023": "bg-blue-500/20 text-blue-300 border-blue-500/30",
-    "2022": "bg-purple-500/20 text-purple-300 border-purple-500/30",
-  };
-  const yearColor = yearColors[publication.year] || "bg-slate-500/20 text-slate-300 border-slate-500/30";
-
-  const typeColors: Record<string, string> = {
-    conference: "bg-amber-500/15 text-amber-300 border-amber-500/20",
-    journal: "bg-emerald-500/15 text-emerald-300 border-emerald-500/20",
-    workshop: "bg-rose-500/15 text-rose-300 border-rose-500/20",
-    preprint: "bg-slate-500/15 text-slate-300 border-slate-500/20",
-  };
-  const typeColor = typeColors[publication.type] || typeColors.preprint;
-
   return (
-    <div className="group rounded-xl border border-cyber-500/10 bg-slate-900/40 p-5 transition-all duration-200 hover:border-cyber-500/25 hover:bg-slate-900/60">
+    <div className="card-hover p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 mb-2">
-            <span className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${yearColor}`}>
+            <span className={yearBadge[publication.year] || fallbackYear}>
               {publication.year}
             </span>
-            <span className={`inline-flex items-center rounded-md border px-2 py-0.5 text-[10px] font-medium capitalize ${typeColor}`}>
+            <span className={typeBadge[publication.type] || typeBadge.preprint}>
               {publication.type}
             </span>
           </div>
@@ -54,18 +53,15 @@ export default function PublicationCard({ publication, showAbstract = false }: P
         </p>
       )}
 
-      <div className="mt-3 flex flex-wrap items-center gap-2">
+      <div className="mt-3 flex flex-wrap items-center gap-1.5">
         {publication.domain.map((d) => (
-          <span
-            key={d}
-            className="rounded-full bg-cyber-500/8 px-2 py-0.5 text-[10px] font-medium text-cyber-400"
-          >
+          <span key={d} className="tag-cyan">
             {d}
           </span>
         ))}
       </div>
 
-      <div className="mt-3 flex items-center gap-2 border-t border-cyber-500/5 pt-3">
+      <div className="mt-3 flex items-center gap-2 border-t border-slate-700/50 pt-3">
         {publication.doi && (
           <a
             href={`https://doi.org/${publication.doi}`}
@@ -83,7 +79,7 @@ export default function PublicationCard({ publication, showAbstract = false }: P
             href={publication.pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 rounded-md bg-slate-800 px-2.5 py-1 text-[10px] font-medium text-slate-300 hover:bg-slate-700 transition-colors"
+            className="inline-flex items-center gap-1 rounded-md bg-slate-700/50 px-2.5 py-1 text-[10px] font-medium text-slate-300 hover:bg-slate-700 transition-colors"
           >
             <FileText className="h-3 w-3" />
             PDF
@@ -100,7 +96,7 @@ function CopyButton({ bibtex }: { bibtex: string }) {
       onClick={() => {
         navigator.clipboard.writeText(bibtex).catch(() => {});
       }}
-      className="inline-flex items-center gap-1 rounded-md bg-slate-800 px-2.5 py-1 text-[10px] font-medium text-slate-300 hover:bg-slate-700 transition-colors"
+      className="inline-flex items-center gap-1 rounded-md bg-slate-700/50 px-2.5 py-1 text-[10px] font-medium text-slate-300 hover:bg-slate-700 transition-colors"
     >
       <Copy className="h-3 w-3" />
       BibTeX

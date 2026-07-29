@@ -13,9 +13,9 @@ export default function PlatformsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-10">
-        <div className="inline-flex items-center gap-2 rounded-full border border-cyber-500/20 bg-cyber-500/10 px-3 py-1 mb-4">
+        <div className="badge mb-4">
           <Monitor className="h-3.5 w-3.5 text-cyber-400" />
-          <span className="text-xs font-medium text-cyber-300">Infrastructure</span>
+          <span className="badge-label">Infrastructure</span>
         </div>
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           Platforms &amp; Testbeds
@@ -32,10 +32,10 @@ export default function PlatformsPage() {
           return (
             <div
               key={platform.name}
-              className="group rounded-2xl border border-cyber-500/10 bg-slate-900/40 p-6 transition-all duration-300 hover:border-cyber-500/30 hover:bg-slate-900/60 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)]"
+              className="card-hover p-6"
             >
               <div className="flex items-start gap-4">
-                <div className="rounded-xl border border-cyber-500/20 bg-cyber-500/10 p-3">
+                <div className="rounded-xl border border-slate-700/50 bg-slate-800/60 p-3">
                   <Icon className="h-6 w-6 text-cyber-400" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -48,12 +48,7 @@ export default function PlatformsPage() {
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {platform.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-cyber-500/10 px-2.5 py-1 text-xs font-medium text-cyber-300"
-                      >
-                        {tag}
-                      </span>
+                      <span key={tag} className="tag-cyan">{tag}</span>
                     ))}
                   </div>
 
@@ -89,7 +84,7 @@ export default function PlatformsPage() {
         })}
       </div>
 
-      <div className="mt-12 rounded-xl border border-cyber-500/10 bg-slate-900/30 p-6">
+      <div className="card p-6">
         <h3 className="text-sm font-semibold text-white">
           Interested in collaborating or using our testbeds?
         </h3>
@@ -98,7 +93,7 @@ export default function PlatformsPage() {
           access to our platforms for research, education, or training purposes.
         </p>
         <a
-          href="mailto:vasilis@cpssec.org"
+          href="mailto:ieropoulos.vasilis@ucy.ac.cy"
           className="mt-3 inline-flex items-center gap-1 text-xs text-cyber-400 hover:text-cyber-300 transition-colors"
         >
           Get in touch &rarr;

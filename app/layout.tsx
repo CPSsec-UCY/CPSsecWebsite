@@ -50,7 +50,7 @@ export default function RootLayout({
 
 function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-cyber-500/10 bg-slate-950/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <a href={p("/")} className="flex items-center gap-2 group">
           <div className="h-8 w-8 rounded-lg bg-cyber-500/20 border border-cyber-500/30 flex items-center justify-center group-hover:bg-cyber-500/30 transition-colors">
@@ -60,7 +60,7 @@ function Header() {
             <span className="text-sm font-bold text-white tracking-tight leading-tight">
               CPSSec
             </span>
-            <span className="text-[10px] text-slate-500 font-mono leading-tight hidden sm:block">
+            <span className="text-[10px] text-slate-400 font-mono leading-tight hidden sm:block">
               Cyber-Physical Systems Security Lab
             </span>
           </div>
@@ -82,7 +82,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <a
       href={p(href)}
-      className="rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-400 hover:text-cyber-300 hover:bg-cyber-500/10 transition-all duration-200"
+      className="rounded-md px-2.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-cyber-500/10 transition-all duration-200"
     >
       {children}
     </a>
@@ -91,7 +91,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 
 function Footer() {
   return (
-    <footer className="border-t border-cyber-500/10 bg-slate-950">
+    <footer className="border-t border-slate-800 bg-slate-950">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-3">
           <div>
@@ -101,7 +101,7 @@ function Footer() {
               </div>
               <span className="text-sm font-bold text-white">CPSSec</span>
             </div>
-            <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+            <p className="mt-2 text-xs text-slate-400 leading-relaxed">
               Cyber-Physical Systems Security Lab. Advancing security and
               resilience of critical infrastructure through cutting-edge research.
             </p>
@@ -115,10 +115,10 @@ function Footer() {
               href="https://www.ucy.ac.cy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-cyber-400 transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-slate-300 hover:text-white transition-colors"
             >
               <svg viewBox="0 0 40 40" className="h-6 w-6 shrink-0" fill="none">
-                <rect width="40" height="40" rx="8" className="fill-slate-800" />
+                <rect width="40" height="40" rx="8" className="fill-slate-700" />
                 <text x="20" y="24" textAnchor="middle" className="fill-cyber-400 text-[14px] font-bold" fontFamily="system-ui">UCY</text>
               </svg>
               <span>University of Cyprus</span>
@@ -127,10 +127,10 @@ function Footer() {
               href="https://www.kios.ucy.ac.cy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-cyber-400 transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-slate-300 hover:text-white transition-colors"
             >
               <svg viewBox="0 0 40 40" className="h-6 w-6 shrink-0" fill="none">
-                <rect width="40" height="40" rx="8" className="fill-slate-800" />
+                <rect width="40" height="40" rx="8" className="fill-slate-700" />
                 <text x="20" y="24" textAnchor="middle" className="fill-cyber-400 text-[11px] font-bold" fontFamily="system-ui">KIOS</text>
               </svg>
               <span>KIOS Centre of Excellence</span>
@@ -142,15 +142,15 @@ function Footer() {
               Quick Links
             </span>
             <div className="flex flex-col gap-1.5">
-              <a href={p("/about")} className="text-xs text-slate-400 hover:text-cyber-400 transition-colors">About</a>
-              <a href={p("/team")} className="text-xs text-slate-400 hover:text-cyber-400 transition-colors">Team</a>
-              <a href={p("/publications")} className="text-xs text-slate-400 hover:text-cyber-400 transition-colors">Publications</a>
-              <a href={p("/platforms")} className="text-xs text-slate-400 hover:text-cyber-400 transition-colors">Platforms</a>
+              <a href={p("/about")} className="text-xs text-slate-300 hover:text-white transition-colors">About</a>
+              <a href={p("/team")} className="text-xs text-slate-300 hover:text-white transition-colors">Team</a>
+              <a href={p("/publications")} className="text-xs text-slate-300 hover:text-white transition-colors">Publications</a>
+              <a href={p("/platforms")} className="text-xs text-slate-300 hover:text-white transition-colors">Platforms</a>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 border-t border-cyber-500/5 pt-6 text-center text-xs text-slate-600">
+        <div className="mt-8 border-t border-slate-800 pt-6 text-center text-xs text-slate-500">
           &copy; {new Date().getFullYear()} CPSSec — University of Cyprus. All rights reserved.
         </div>
       </div>

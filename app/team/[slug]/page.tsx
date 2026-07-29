@@ -26,9 +26,9 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
         Back to Team
       </a>
 
-      <div className="rounded-2xl border border-cyber-500/10 bg-slate-900/40 p-6 sm:p-8">
+      <div className="card p-6 sm:p-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-          <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-900">
+          <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800">
             {member.avatarUrl ? (
               <img
                 src={p(member.avatarUrl)}
@@ -48,7 +48,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                 {member.name}
               </h1>
               <p className="text-sm font-medium text-cyber-400">{member.role}</p>
-              <p className="text-xs text-slate-500">Joined {member.joined}</p>
+              <p className="text-xs text-slate-400">Joined {member.joined}</p>
             </div>
 
             <p className="mt-4 text-sm text-slate-300 leading-relaxed">
@@ -57,12 +57,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
 
             <div className="mt-4 flex flex-wrap gap-1.5">
               {member.researchInterests.map((interest) => (
-                <span
-                  key={interest}
-                  className="rounded-full bg-cyber-500/10 px-2.5 py-1 text-xs font-medium text-cyber-300"
-                >
-                  {interest}
-                </span>
+                <span key={interest} className="tag-cyan">{interest}</span>
               ))}
             </div>
 
@@ -72,7 +67,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={`https://github.com/${member.socials.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyber-400 transition-colors"
+                  className="text-slate-400 hover:text-cyber-400 transition-colors"
                   aria-label="GitHub"
                 >
                   <Github className="h-4 w-4" />
@@ -83,7 +78,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={`https://linkedin.com/in/${member.socials.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyber-400 transition-colors"
+                  className="text-slate-400 hover:text-cyber-400 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-4 w-4" />
@@ -92,7 +87,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
               {member.socials.email && (
                 <a
                   href={`mailto:${member.socials.email}`}
-                  className="text-slate-500 hover:text-cyber-400 transition-colors"
+                  className="text-slate-400 hover:text-cyber-400 transition-colors"
                   aria-label="Email"
                 >
                   <Mail className="h-4 w-4" />
@@ -103,7 +98,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={member.socials.googleScholar}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyber-400 transition-colors"
+                  className="text-slate-400 hover:text-cyber-400 transition-colors"
                   aria-label="Google Scholar"
                 >
                   <GraduationCap className="h-4 w-4" />
@@ -114,7 +109,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={`https://orcid.org/${member.socials.orcid}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyber-400 transition-colors"
+                  className="text-slate-400 hover:text-cyber-400 transition-colors"
                   aria-label="ORCID"
                 >
                   <span className="text-[10px] font-bold font-mono">ORCID</span>
@@ -125,7 +120,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                   href={member.socials.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-cyber-400 transition-colors"
+                  className="text-slate-400 hover:text-cyber-400 transition-colors"
                   aria-label="Website"
                 >
                   <ExternalLink className="h-4 w-4" />

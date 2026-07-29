@@ -10,10 +10,10 @@ export default function TeamMemberCard({ member }: Props) {
   return (
     <a
       href={p(`/team/${member.slug}`)}
-      className="group block rounded-xl border border-cyber-500/10 bg-slate-900/50 p-5 transition-all duration-300 hover:border-cyber-500/30 hover:bg-slate-900/80 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)]"
+      className="group card-hover p-5"
     >
       <div className="flex items-start gap-4">
-        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-900">
+        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800">
           {member.avatarUrl ? (
             <img
               src={p(member.avatarUrl)}
@@ -22,7 +22,7 @@ export default function TeamMemberCard({ member }: Props) {
               loading="lazy"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center text-xl font-bold text-cyber-400">
+            <div className="flex h-full w-full items-center justify-center text-lg font-bold text-cyber-400">
               {member.name.split(" ").map((n) => n[0]).join("")}
             </div>
           )}
@@ -38,43 +38,40 @@ export default function TeamMemberCard({ member }: Props) {
             {member.shortBio}
           </p>
         </div>
-        <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-slate-600 group-hover:text-cyber-400 transition-colors" />
+        <ExternalLink className="mt-1 h-3.5 w-3.5 shrink-0 text-slate-500 group-hover:text-cyber-400 transition-colors" />
       </div>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
         {member.researchInterests.slice(0, 3).map((interest) => (
-          <span
-            key={interest}
-            className="rounded-full bg-cyber-500/10 px-2 py-0.5 text-[10px] font-medium text-cyber-300"
-          >
+          <span key={interest} className="tag-cyan">
             {interest}
           </span>
         ))}
         {member.researchInterests.length > 3 && (
-          <span className="rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-slate-500">
+          <span className="rounded-full bg-slate-700/50 px-2 py-0.5 text-[10px] text-slate-400">
             +{member.researchInterests.length - 3}
           </span>
         )}
       </div>
 
-      <div className="mt-3 flex items-center gap-2 border-t border-cyber-500/5 pt-3">
+      <div className="mt-3 flex items-center gap-2 border-t border-slate-700/50 pt-3">
         {member.socials.github && (
-          <span className="text-slate-500 hover:text-cyber-400 transition-colors" aria-label="GitHub">
+          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="GitHub">
             <Github className="h-3.5 w-3.5" />
           </span>
         )}
         {member.socials.linkedin && (
-          <span className="text-slate-500 hover:text-cyber-400 transition-colors" aria-label="LinkedIn">
+          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="LinkedIn">
             <Linkedin className="h-3.5 w-3.5" />
           </span>
         )}
         {member.socials.email && (
-          <span className="text-slate-500 hover:text-cyber-400 transition-colors" aria-label="Email">
+          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="Email">
             <Mail className="h-3.5 w-3.5" />
           </span>
         )}
         {member.socials.googleScholar && (
-          <span className="text-slate-500 hover:text-cyber-400 transition-colors" aria-label="Google Scholar">
+          <span className="text-slate-400 hover:text-cyber-400 transition-colors" aria-label="Google Scholar">
             <GraduationCap className="h-3.5 w-3.5" />
           </span>
         )}

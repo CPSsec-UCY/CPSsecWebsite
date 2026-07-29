@@ -22,16 +22,16 @@ export default function HomePage() {
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-cyber-500/10">
+    <section className="relative overflow-hidden border-b border-slate-800">
       <div className="absolute inset-0 bg-gradient-to-br from-cyber-950/30 via-slate-950 to-slate-950" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,182,212,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(6,182,212,0.05),transparent_50%)]" />
 
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyber-500/20 bg-cyber-500/10 px-3 py-1">
+          <div className="badge mb-4">
             <Shield className="h-3.5 w-3.5 text-cyber-400" />
-            <span className="text-xs font-medium text-cyber-300">
+            <span className="badge-label">
               Cyber-Physical Systems Security Research Lab
             </span>
           </div>
@@ -43,7 +43,7 @@ function HeroSection() {
             </span>
           </h1>
 
-          <p className="mt-6 text-base leading-relaxed text-slate-400 sm:text-lg max-w-2xl mx-auto">
+          <p className="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg max-w-2xl mx-auto">
             CPSSec advances the security and resilience of cyber-physical systems
             through cutting-edge research in ICS/OT security, smart grid protection,
             IoT security, and cyber range technologies.
@@ -80,17 +80,17 @@ function StatsBanner() {
   ];
 
   return (
-    <section className="border-b border-cyber-500/10 bg-slate-900/50">
+    <section className="border-b border-slate-800 bg-slate-900/50">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-xl border border-cyber-500/10 bg-slate-900/60 p-4 text-center"
+              className="card p-4 text-center"
             >
               <stat.icon className="mx-auto h-5 w-5 text-cyber-400" />
               <p className="mt-2 text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-xs text-slate-500">{stat.label}</p>
+              <p className="text-xs text-slate-400">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -101,12 +101,12 @@ function StatsBanner() {
 
 function SelectedPublications({ publications }: { publications: any[] }) {
   return (
-    <section className="border-b border-cyber-500/10">
+    <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h2 className="section-title">Selected Publications</h2>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="section-subtitle">
               Recent contributions from the lab
             </p>
           </div>
@@ -137,12 +137,12 @@ function SelectedPublications({ publications }: { publications: any[] }) {
 
 function TeamSpotlight({ members }: { members: any[] }) {
   return (
-    <section className="border-b border-cyber-500/10">
+    <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h2 className="section-title">Team Spotlight</h2>
-            <p className="mt-1 text-sm text-slate-500">Meet our researchers</p>
+            <p className="section-subtitle">Meet our researchers</p>
           </div>
           <a
             href={p("/team")}
@@ -176,7 +176,7 @@ function PlatformsPreview() {
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h2 className="section-title">Platforms &amp; Testbeds</h2>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="section-subtitle">
               Hardware and software cyber ranges
             </p>
           </div>
@@ -192,19 +192,14 @@ function PlatformsPreview() {
           {platforms.map((p) => (
             <div
               key={p.name}
-              className="rounded-xl border border-cyber-500/10 bg-slate-900/40 p-5 hover:border-cyber-500/25 transition-colors"
+              className="card-hover p-5"
             >
               <p.icon className="h-5 w-5 text-cyber-400" />
               <h3 className="mt-3 text-sm font-semibold text-white">{p.name}</h3>
               <p className="mt-1 text-xs text-slate-400">{p.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-cyber-500/8 px-2 py-0.5 text-[10px] text-cyber-400"
-                  >
-                    {t}
-                  </span>
+                  <span key={t} className="tag-cyan">{t}</span>
                 ))}
               </div>
             </div>
