@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { p } from "@/lib/base";
 import "./globals.css";
 
@@ -108,9 +109,11 @@ function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-xs text-slate-200 transition-colors hover:text-white"
             >
-              <img
+              <Image
                 src="/logos/ucy-logo.svg"
                 alt="University of Cyprus logo"
+                width={112}
+                height={32}
                 className="h-8 w-28 shrink-0 rounded-md object-contain"
               />
               <span className="sr-only">University of Cyprus</span>
@@ -121,9 +124,11 @@ function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-xs text-slate-200 transition-colors hover:text-white"
             >
-              <img
+              <Image
                 src="/logos/kios-logo.svg"
                 alt="KIOS Centre of Excellence logo"
+                width={112}
+                height={32}
                 className="h-8 w-28 shrink-0 rounded-md object-contain"
               />
               <span className="sr-only">KIOS Centre of Excellence</span>

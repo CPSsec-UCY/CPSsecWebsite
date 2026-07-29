@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { getAllTeamMembers, getTeamMemberBySlug } from "@/lib/team";
 import { getPublicationsBySlug } from "@/lib/publications";
 import { p } from "@/lib/base";
@@ -30,9 +31,11 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
           <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800">
             {member.avatarUrl ? (
-              <img
-                src={p(member.avatarUrl)}
+              <Image
+                src={member.avatarUrl}
                 alt={member.name}
+                width={96}
+                height={96}
                 className="h-full w-full object-cover"
               />
             ) : (

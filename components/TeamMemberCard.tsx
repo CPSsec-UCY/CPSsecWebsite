@@ -1,4 +1,5 @@
 import type { TeamMember } from "@/types/team";
+import Image from "next/image";
 import { p } from "@/lib/base";
 import { Github, Linkedin, Mail, ExternalLink, GraduationCap } from "lucide-react";
 
@@ -15,11 +16,13 @@ export default function TeamMemberCard({ member }: Props) {
       <div className="flex items-start gap-4">
         <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800 shadow-inner">
           {member.avatarUrl ? (
-            <img
-              src={p(member.avatarUrl)}
+            <Image
+              src={member.avatarUrl}
               alt={member.name}
-              className="h-full w-full object-cover"
+              width={64}
+              height={64}
               loading="lazy"
+              className="h-full w-full object-cover"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-lg font-bold text-cyber-400">
