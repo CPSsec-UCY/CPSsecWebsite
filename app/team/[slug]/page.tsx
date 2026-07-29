@@ -17,7 +17,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
   const publications = getPublicationsBySlug(member.slug);
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="page-shell max-w-5xl">
       <a
         href={p("/team")}
         className="mb-6 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyber-400 transition-colors animate-fade-in-up"

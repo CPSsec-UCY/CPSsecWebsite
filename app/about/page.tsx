@@ -2,7 +2,7 @@ import { Shield, Building, GraduationCap, ExternalLink, Server, Cpu, Network, Lo
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="page-shell max-w-4xl">
       <div className="mb-10">
         <div className="badge mb-4">
           <Shield className="h-3.5 w-3.5 text-cyber-400" />

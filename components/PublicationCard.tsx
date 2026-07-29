@@ -24,7 +24,7 @@ const typeBadge: Record<string, string> = {
 
 export default function PublicationCard({ publication, showAbstract = false }: Props) {
   return (
-    <div className="card-hover p-5">
+    <div className="card-hover group p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 mb-2">
@@ -35,13 +35,13 @@ export default function PublicationCard({ publication, showAbstract = false }: P
               {publication.type}
             </span>
           </div>
-          <h3 className="text-sm font-semibold text-white leading-snug group-hover:text-cyber-300 transition-colors">
+          <h3 className="break-words text-sm font-semibold leading-snug text-white transition-colors group-hover:text-cyber-300">
             {publication.title}
           </h3>
-          <p className="mt-1 text-xs text-slate-300">
+          <p className="mt-1 text-xs leading-relaxed text-slate-300">
             {publication.authors.join(", ")}
           </p>
-          <p className="mt-0.5 text-xs text-slate-400 italic">
+          <p className="mt-0.5 text-xs italic text-slate-400">
             {publication.venue}
           </p>
         </div>

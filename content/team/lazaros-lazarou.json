@@ -7,7 +7,8 @@
   "shortBio": "PhD student researching PQC, fast packet processing in SDN, and CPS security.",
   "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/lazaros-lazarou-intern-qj2h1k4rkh990w5asmoor7sgzp69wv9xuk7gubi248.jpg",
   "socials": {
-    "email": "llazar01@ucy.ac.cy"
+    "email": "llazar01@ucy.ac.cy",
+    "googleScholar": "https://scholar.google.com/citations?user=1O7Zt1AAAAAJ&hl=el"
   },
   "researchInterests": ["Post-Quantum Cryptography", "Software-Defined Networks", "Cyber-Physical Systems", "Anomaly Detection", "ICS Security"],
   "joined": "2025-09-01",

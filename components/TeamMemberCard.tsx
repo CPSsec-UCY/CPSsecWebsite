@@ -10,10 +10,10 @@ export default function TeamMemberCard({ member }: Props) {
   return (
     <a
       href={p(`/team/${member.slug}`)}
-      className="group card-hover p-5"
+      className="group card-hover flex h-full flex-col p-5"
     >
       <div className="flex items-start gap-4">
-        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800">
+        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800 shadow-inner">
           {member.avatarUrl ? (
             <img
               src={p(member.avatarUrl)}

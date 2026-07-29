@@ -18,7 +18,7 @@ export default function TeamPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <div className="mb-10">
         <div className="badge mb-4">
           <Users className="h-3.5 w-3.5 text-cyber-400" />

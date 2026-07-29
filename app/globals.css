@@ -3,8 +3,30 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-slate-900 text-slate-200 antialiased;
+    @apply min-h-screen bg-slate-950 text-slate-200 antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(6, 182, 212, 0.16), transparent 28%),
+      radial-gradient(circle at 85% 10%, rgba(14, 116, 144, 0.16), transparent 24%),
+      linear-gradient(135deg, #020617 0%, #0f172a 50%, #111827 100%);
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img,
+  svg {
+    @apply block max-w-full;
   }
 
   ::selection {
@@ -14,23 +36,39 @@
 
 @layer components {
   .card {
-    @apply rounded-xl border border-slate-700/60 bg-slate-800/70;
+    @apply rounded-2xl border border-slate-700/60 bg-slate-800/70 shadow-[0_12px_40px_rgba(2,6,23,0.22)] backdrop-blur-sm;
   }
 
   .card-hover {
-    @apply card transition-all duration-200 hover:border-cyber-500/30 hover:bg-slate-800/80 hover:shadow-[0_0_20px_rgba(6,182,212,0.06)];
+    @apply card transition-all duration-200 hover:-translate-y-0.5 hover:border-cyber-500/30 hover:bg-slate-800/80 hover:shadow-[0_0_25px_rgba(6,182,212,0.08)];
   }
 
   .cyber-link {
-    @apply text-cyber-400 hover:text-cyber-300 transition-colors duration-200;
+    @apply text-cyber-400 transition-colors duration-200 hover:text-cyber-300;
   }
 
   .section-title {
-    @apply text-2xl font-bold text-white tracking-tight;
+    @apply text-2xl font-bold tracking-tight text-white;
   }
 
   .section-subtitle {
     @apply mt-1 text-sm text-slate-300;
+  }
+
+  .page-shell {
+    @apply mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8;
+  }
+
+  .page-heading {
+    @apply mb-10 max-w-3xl;
+  }
+
+  .page-title {
+    @apply text-3xl font-bold tracking-tight text-white sm:text-4xl;
+  }
+
+  .page-subtitle {
+    @apply mt-2 text-sm leading-relaxed text-slate-300 sm:text-base;
   }
 
   .tag-cyan {
@@ -41,6 +79,18 @@
   }
   .tag-green {
     @apply rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-cyber-500/25 bg-cyber-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-cyber-300 shadow-[0_0_0_1px_rgba(6,182,212,0.08)] backdrop-blur-sm;
+  }
+
+  .badge-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.24em] text-cyber-300;
+  }
+
+  .badge-icon {
+    @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyber-500/20 bg-cyber-500/10 text-cyber-400;
   }
 
   .badge-year {
@@ -76,10 +126,10 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-slate-900;
+  @apply bg-slate-950;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-cyber-700/50 rounded-full;
+  @apply rounded-full bg-cyber-700/50;
 }
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-cyber-600/70;
@@ -87,13 +137,25 @@
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {

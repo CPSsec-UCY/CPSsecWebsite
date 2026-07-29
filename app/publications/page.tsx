@@ -8,7 +8,7 @@ export default function PublicationsPage() {
   const members = getAllTeamMembers().map((m) => ({ slug: m.slug, name: m.name }));
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="page-shell max-w-4xl">
       <div className="mb-8">
         <div className="badge mb-4 animate-fade-in-up">
           <BookOpen className="h-3.5 w-3.5 text-cyber-400" />
