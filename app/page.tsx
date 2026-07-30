@@ -63,7 +63,7 @@ function HeroSection() {
           <div className="badge mb-4 animate-fade-in-up">
             <Shield className="h-3.5 w-3.5 text-cyber-400" />
             <span className="badge-label">
-              Cyber-Physical Systems Security Research Lab
+              KIOS-affiliated Cyber-Physical Systems Security Lab
             </span>
           </div>
 
@@ -75,9 +75,11 @@ function HeroSection() {
           </h1>
 
           <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "200ms" }}>
-            CPSSec advances the security and resilience of cyber-physical systems
-            through cutting-edge research in ICS/OT security, smart grid protection,
-            IoT security, and cyber range technologies.
+            CPSSec is a research lab within KIOS at the University of Cyprus, advancing the
+            security and resilience of cyber-physical systems through cutting-edge research in
+            ICS/OT security, smart grid protection, IoT security, and cyber range technologies.
+            Our work is validated on a wide range of physical and virtual testbeds spanning power,
+            water, networking, and industrial environments.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
