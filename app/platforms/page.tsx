@@ -1,6 +1,8 @@
 import { Network, Shield, Cpu, Monitor } from "lucide-react";
+import { getAllPlatforms } from "@/lib/platforms";
+import type { Platform } from "@/types/platform";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<Platform["icon"], any> = {
   Network,
   Shield,
   Cpu,
@@ -8,6 +10,8 @@ const iconMap: Record<string, any> = {
 };
 
 export default function PlatformsPage() {
+  const platforms = getAllPlatforms();
+
   return (
     <div className="page-shell">
       <div className="mb-10">
@@ -101,45 +105,3 @@ export default function PlatformsPage() {
     </div>
   );
 }
-
-const platforms = [
-  {
-    name: "Cyber Range",
-    icon: "Network",
-    description:
-      "A flexible environment for running realistic cyber-physical exercises, attack scenarios, and defensive training sessions for researchers and students.",
-    tags: ["Cyber Range", "Training", "Exercises"],
-    status: "Active",
-    features: [
-      "Scenario-based training for critical infrastructure protection",
-      "Support for attack and defense exercises",
-      "Realistic emulation of operational environments",
-    ],
-  },
-  {
-    name: "ICS Testbed",
-    icon: "Shield",
-    description:
-      "A dedicated industrial control systems testbed for evaluating networked OT environments, stealthy attack vectors, and monitoring approaches in realistic conditions.",
-    tags: ["ICS/OT", "Industrial Control", "Security"],
-    status: "Active",
-    features: [
-      "Simulation of industrial network behavior",
-      "Detection and response experimentation",
-      "Support for ICS-focused security research",
-    ],
-  },
-  {
-    name: "IoT Testbed",
-    icon: "Cpu",
-    description:
-      "An IoT-focused testbed for evaluating embedded devices, communication protocols, and lightweight security mechanisms in constrained environments.",
-    tags: ["IoT", "Embedded", "Security"],
-    status: "Active",
-    features: [
-      "Device and protocol experimentation",
-      "Resource-constrained security evaluation",
-      "Support for IoT and edge-security research",
-    ],
-  },
-];

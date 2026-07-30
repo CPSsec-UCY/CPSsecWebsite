@@ -1,24 +1,54 @@
 import { Shield, Cpu, BookOpen, Users, Database, Network, ArrowRight, ExternalLink } from "lucide-react";
 import { getAllPublications } from "@/lib/publications";
 import { getAllTeamMembers } from "@/lib/team";
+import { getAllPlatforms, getActivePlatforms } from "@/lib/platforms";
+import { getAllProjects } from "@/lib/projects";
 import { p } from "@/lib/base";
 import PublicationCard from "@/components/PublicationCard";
 import TeamMemberCard from "@/components/TeamMemberCard";
+import type { Publication } from "@/types/publication";
+import type { TeamMember } from "@/types/team";
+import type { Platform } from "@/types/platform";
+import type { Project } from "@/types/project";
+
+const homePlatformIconMap: Record<Platform["icon"], any> = {
+  Network,
+  Shield,
+  Cpu,
+  Monitor: Network,
+};
 
 export default function HomePage() {
-  const publications = getAllPublications().slice(0, 4);
-  const members = getAllTeamMembers().filter((m) => m.role !== "Alumni").slice(0, 3);
+  const allPublications = getAllPublications();
+  const publications = allPublications.slice(0, 4);
+  const allMembers = getAllTeamMembers().filter((m) => m.role !== "Alumni");
+  const members = allMembers.slice(0, 3);
+  const projects = getAllProjects();
+  const platforms = getAllPlatforms();
+
+  const stats = {
+    activeTestbeds: getActivePlatforms().length,
+    peerReviewedPapers: countPeerReviewedPapers(allPublications),
+    industryProjects: projects.length,
+    labMembers: allMembers.length,
+  };
 
   return (
     <>
       <HeroSection />
-      <StatsBanner />
+      <StatsBanner stats={stats} />
       <SelectedPublications publications={publications} />
       <TeamSpotlight members={members} />
-      <FeaturedProjects />
-      <PlatformsPreview />
+      <FeaturedProjects projects={projects} />
+      <PlatformsPreview platforms={platforms} />
     </>
   );
+}
+
+function countPeerReviewedPapers(publications: Publication[]) {
+  return publications.filter((publication) => {
+    return publication.type === "conference" || publication.type === "journal" || publication.type === "workshop";
+  }).length;
 }
 
 function HeroSection() {
@@ -72,19 +102,28 @@ function HeroSection() {
   );
 }
 
-function StatsBanner() {
-  const stats = [
-    { icon: Cpu, label: "Active Testbeds", value: "4" },
-    { icon: BookOpen, label: "Peer-Reviewed Papers", value: "9" },
-    { icon: Database, label: "Industry Projects", value: "6" },
-    { icon: Users, label: "Lab Members", value: "6" },
+function StatsBanner({
+  stats,
+}: {
+  stats: {
+    activeTestbeds: number;
+    peerReviewedPapers: number;
+    industryProjects: number;
+    labMembers: number;
+  };
+}) {
+  const statItems = [
+    { icon: Cpu, label: "Active Testbeds", value: stats.activeTestbeds },
+    { icon: BookOpen, label: "Peer-Reviewed Papers", value: stats.peerReviewedPapers },
+    { icon: Database, label: "Industry Projects", value: stats.industryProjects },
+    { icon: Users, label: "Lab Members", value: stats.labMembers },
   ];
 
   return (
     <section className="border-b border-slate-800 bg-slate-900/50">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {stats.map((stat, i) => (
+          {statItems.map((stat, i) => (
             <div
               key={stat.label}
               className="card p-4 text-center animate-fade-in-up"
@@ -101,7 +140,7 @@ function StatsBanner() {
   );
 }
 
-function SelectedPublications({ publications }: { publications: any[] }) {
+function SelectedPublications({ publications }: { publications: Publication[] }) {
   return (
     <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -139,7 +178,7 @@ function SelectedPublications({ publications }: { publications: any[] }) {
   );
 }
 
-function TeamSpotlight({ members }: { members: any[] }) {
+function TeamSpotlight({ members }: { members: TeamMember[] }) {
   return (
     <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -175,7 +214,7 @@ function TeamSpotlight({ members }: { members: any[] }) {
   );
 }
 
-function FeaturedProjects() {
+function FeaturedProjects({ projects }: { projects: Project[] }) {
   return (
     <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -227,38 +266,7 @@ function FeaturedProjects() {
   );
 }
 
-const projects = [
-  {
-    name: "ACTING",
-    description:
-      "A European initiative advancing interoperable cyber-training and exercise capabilities for proactive cyber defence across connected operational environments.",
-    tags: ["Cyber Training", "EU Project", "Exercise Networks"],
-    link: "https://acting-project.eu/",
-  },
-  {
-    name: "CITADEL Range",
-    description:
-      "An EU defence-focused cyber range programme creating interoperable tools and frameworks to improve advanced training and preparedness for military cyber operations.",
-    tags: ["Cyber Range", "Defence", "EU Research"],
-    link: "https://www.kios.ucy.ac.cy/projects_kios/citadel-range-cyber-infrastructure-for-training-in-advanced-defence-exercises-and-learning/",
-  },
-  {
-    name: "COCOON",
-    description:
-      "A Horizon Europe project strengthening the resilience of modern power grids through cooperative cyber-physical protection and real-world pilot demonstrations.",
-    tags: ["Energy Systems", "Resilience", "Horizon Europe"],
-    link: "https://www.cyber-cocoon.eu/",
-  },
-  {
-    name: "FOCAL",
-    description:
-      "A post-quantum cryptography project developing practical, interoperable PQC frameworks for edge and critical infrastructure environments.",
-    tags: ["Post-Quantum", "Cryptography", "Critical Infrastructure"],
-    link: "https://www.focal-pqc.eu/",
-  },
-];
-
-function PlatformsPreview() {
+function PlatformsPreview({ platforms }: { platforms: Platform[] }) {
   return (
     <section>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -278,22 +286,25 @@ function PlatformsPreview() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {platforms.map((p, i) => (
-            <div
-              key={p.name}
-              className="card-hover p-5 animate-fade-in-up"
-              style={{ animationDelay: `${200 + i * 80}ms` }}
-            >
-              <p.icon className="h-5 w-5 text-cyber-400" />
-              <h3 className="mt-3 text-sm font-semibold text-white">{p.name}</h3>
-              <p className="mt-1 text-xs text-slate-300">{p.description}</p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {p.tags.map((t) => (
-                  <span key={t} className="tag-cyan">{t}</span>
-                ))}
+          {platforms.map((platform, i) => {
+            const Icon = homePlatformIconMap[platform.icon] || Network;
+            return (
+              <div
+                key={platform.name}
+                className="card-hover p-5 animate-fade-in-up"
+                style={{ animationDelay: `${200 + i * 80}ms` }}
+              >
+                <Icon className="h-5 w-5 text-cyber-400" />
+                <h3 className="mt-3 text-sm font-semibold text-white">{platform.name}</h3>
+                <p className="mt-1 text-xs text-slate-300">{platform.description}</p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {platform.tags.map((tag) => (
+                    <span key={tag} className="tag-cyan">{tag}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <a
@@ -306,27 +317,3 @@ function PlatformsPreview() {
     </section>
   );
 }
-
-const platforms = [
-  {
-    name: "Cyber Range",
-    icon: Network,
-    description:
-      "A flexible environment for running realistic cyber-physical exercises and attack-defense scenarios for training and research.",
-    tags: ["Cyber Range", "Training", "Exercises"],
-  },
-  {
-    name: "ICS Testbed",
-    icon: Shield,
-    description:
-      "A dedicated industrial control systems environment for evaluating OT security, monitoring, and stealthy attack detection research.",
-    tags: ["ICS/OT", "Industrial Control", "Security"],
-  },
-  {
-    name: "IoT Testbed",
-    icon: Cpu,
-    description:
-      "An IoT-focused environment for evaluating embedded devices, protocols, and lightweight security mechanisms in constrained settings.",
-    tags: ["IoT", "Embedded", "Security"],
-  },
-];
