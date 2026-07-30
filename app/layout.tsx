@@ -110,7 +110,7 @@ function Footer() {
               className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-3 py-2 transition-opacity hover:opacity-90"
             >
               <Image
-                src="/logos/ucy-logo.png"
+                src={p("/logos/ucy-logo.png")}
                 alt="University of Cyprus logo"
                 width={324}
                 height={90}
@@ -124,7 +124,7 @@ function Footer() {
               className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-3 py-2 transition-opacity hover:opacity-90"
             >
               <Image
-                src="/logos/kios-logo.png"
+                src={p("/logos/kios-logo.png")}
                 alt="KIOS Research and Innovation Center of Excellence logo"
                 width={768}
                 height={294}
