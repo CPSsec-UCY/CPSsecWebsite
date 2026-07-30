@@ -107,31 +107,29 @@ function Footer() {
               href="https://www.ucy.ac.cy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-slate-200 transition-colors hover:text-white"
+              className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-3 py-2 transition-opacity hover:opacity-90"
             >
               <Image
-                src="/logos/ucy-logo.svg"
+                src="/logos/ucy-logo.png"
                 alt="University of Cyprus logo"
-                width={112}
-                height={32}
-                className="h-8 w-28 shrink-0 rounded-md object-contain"
+                width={324}
+                height={90}
+                className="h-6 w-auto shrink-0 object-contain"
               />
-              <span className="sr-only">University of Cyprus</span>
             </a>
             <a
               href="https://www.kios.ucy.ac.cy"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-slate-200 transition-colors hover:text-white"
+              className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-3 py-2 transition-opacity hover:opacity-90"
             >
               <Image
-                src="/logos/kios-logo.svg"
-                alt="KIOS Centre of Excellence logo"
-                width={112}
-                height={32}
-                className="h-8 w-28 shrink-0 rounded-md object-contain"
+                src="/logos/kios-logo.png"
+                alt="KIOS Research and Innovation Center of Excellence logo"
+                width={768}
+                height={294}
+                className="h-8 w-auto shrink-0 object-contain"
               />
-              <span className="sr-only">KIOS Centre of Excellence</span>
             </a>
           </div>
 

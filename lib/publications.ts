@@ -6,7 +6,9 @@ const pubPath = path.join(process.cwd(), "public/data/publications.json");
 
 export function getAllPublications(): Publication[] {
   const raw = fs.readFileSync(pubPath, "utf-8");
-  return JSON.parse(raw);
+  const publications: Publication[] = JSON.parse(raw);
+  // Only publications with a matched CPSSec/UCY team member author are shown.
+  return publications.filter((p) => p.authorSlugs.length > 0);
 }
 
 export function getPublicationsBySlug(slug: string): Publication[] {
