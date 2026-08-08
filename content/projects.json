@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ACTING",
+    "description": "A European initiative advancing interoperable cyber-training and exercise capabilities for proactive cyber defence across connected operational environments.",
+    "tags": ["Cyber Training", "EU Project", "Exercise Networks"],
+    "link": "https://acting-project.eu/"
+  },
+  {
+    "name": "CITADEL Range",
+    "description": "An EU defence-focused cyber range programme creating interoperable tools and frameworks to improve advanced training and preparedness for military cyber operations.",
+    "tags": ["Cyber Range", "Defence", "EU Research"],
+    "link": "https://www.kios.ucy.ac.cy/projects_kios/citadel-range-cyber-infrastructure-for-training-in-advanced-defence-exercises-and-learning/"
+  },
+  {
+    "name": "COCOON",
+    "description": "A Horizon Europe project strengthening the resilience of modern power grids through cooperative cyber-physical protection and real-world pilot demonstrations.",
+    "tags": ["Energy Systems", "Resilience", "Horizon Europe"],
+    "link": "https://www.cyber-cocoon.eu/"
+  },
+  {
+    "name": "FOCAL",
+    "description": "A post-quantum cryptography project developing practical, interoperable PQC frameworks for edge and critical infrastructure environments.",
+    "tags": ["Post-Quantum", "Cryptography", "Critical Infrastructure"],
+    "link": "https://www.focal-pqc.eu/"
+  }
+]

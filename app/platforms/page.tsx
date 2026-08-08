@@ -1,17 +1,19 @@
-import { Network, Shield, Cpu, Monitor, Radio, Wifi } from "lucide-react";
+import { Network, Shield, Cpu, Monitor } from "lucide-react";
+import { getAllPlatforms } from "@/lib/platforms";
+import type { Platform } from "@/types/platform";
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<Platform["icon"], any> = {
   Network,
   Shield,
   Cpu,
   Monitor,
-  Radio,
-  Wifi,
 };
 
 export default function PlatformsPage() {
+  const platforms = getAllPlatforms();
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="page-shell">
       <div className="mb-10">
         <div className="badge mb-4 animate-fade-in-up">
           <Monitor className="h-3.5 w-3.5 text-cyber-400" />
@@ -103,96 +105,3 @@ export default function PlatformsPage() {
     </div>
   );
 }
-
-const platforms = [
-  {
-    name: "PowerRanger",
-    icon: "Network",
-    description:
-      "An open-source cyber range platform for smart grid security research. PowerRanger integrates hardware-in-the-loop (HIL) simulation with real IEC 61850 process bus communications, enabling realistic attack-defense scenarios for power system operators and researchers.",
-    tags: ["Smart Grid", "HIL", "Open Source"],
-    status: "Active — v2.1 deployed",
-    features: [
-      "Real-time HIL simulation with RTDS and OPAL-RT",
-      "IEC 61850 GOOSE/SV message injection and monitoring",
-      "Multi-vendor protection relay integration (SEL, ABB)",
-      "Pre-built attack scenarios (MITM, replay, DoS, coordinated)",
-      "Capture-the-flag (CTF) exercise framework",
-    ],
-  },
-  {
-    name: "ICS Honeynet",
-    icon: "Shield",
-    description:
-      "A distributed network of high-interaction industrial honeypots deployed across multiple geographic regions. Each node emulates real PLC, RTU, and HMI behavior using vendor-accurate protocol stacks to capture adversary TTPs targeting OT environments.",
-    tags: ["ICS/OT", "Honeypot", "Threat Intel"],
-    status: "Active — 12 nodes across 8 countries",
-    features: [
-      "Protocol-accurate emulation (Modbus, DNP3, S7comm, OPC-UA)",
-      "Automated malware sample capture and analysis pipeline",
-      "Real-time threat intelligence feed integration (MISP)",
-      "Low-interaction to high-interaction dynamic escalation",
-      "Anonymized dataset release for research community",
-    ],
-  },
-  {
-    name: "Firmware Analysis Rig",
-    icon: "Cpu",
-    description:
-      "An automated firmware security analysis pipeline supporting extraction, emulation, and vulnerability discovery for embedded CPS devices. The rig handles a wide range of architectures including ARM, RISC-V, and MIPS.",
-    tags: ["Embedded", "Firmware", "TEE"],
-    status: "Operational — 200+ firmware images analyzed",
-    features: [
-      "Automated firmware extraction from 50+ device families",
-      "QEMU-based full-system emulation with peripheral modeling",
-      "Static analysis (binary diffing, known vulnerability matching)",
-      "Dynamic analysis (fuzzing, symbolic execution with angr)",
-      "TEE security evaluation (TrustZone-M, Keystone)",
-    ],
-  },
-  {
-    name: "5G CPS Testbed",
-    icon: "Radio",
-    description:
-      "A private 5G standalone (SA) testbed for researching security challenges in ultra-reliable low-latency communications (URLLC) for CPS applications. Supports network slicing security and edge computing integration.",
-    tags: ["5G", "URLLC", "Edge Security"],
-    status: "Under development — expected Q4 2024",
-    features: [
-      "OpenAirInterface 5G SA core and gNB deployment",
-      "Network slicing with dedicated QoS for CPS traffic",
-      "MEC (Multi-access Edge Computing) security evaluation",
-      "Time-sensitive networking (TSN) integration",
-      "Attack surface analysis (RAN, core, transport)",
-    ],
-  },
-  {
-    name: "Maritime Cyber Range",
-    icon: "Wifi",
-    description:
-      "A cyber range environment simulating integrated bridge systems (IBS), propulsion control, and cargo management systems for maritime cybersecurity research. Supports both commercial vessel and autonomous surface vessel (ASV) scenarios.",
-    tags: ["Maritime", "Navigation", "Autonomous Vessels"],
-    status: "Phase 1 complete — ECDIS and GPS simulation available",
-    features: [
-      "ECDIS (Electronic Chart Display) simulation",
-      "GPS/GNSS spoofing and jamming attack scenarios",
-      "Automatic Identification System (AIS) manipulation",
-      "Propulsion and steering control system emulation",
-      "Scenario builder for port and offshore operations",
-    ],
-  },
-  {
-    name: "Formal Methods Toolkit",
-    icon: "Monitor",
-    description:
-      "A collection of formal verification tools and models for analyzing safety and security properties of CPS designs. Includes model checkers, theorem provers, and runtime monitors tailored for industrial control applications.",
-    tags: ["Formal Methods", "Verification", "Model Checking"],
-    status: "Active — Uppaal, NuSMV, PRISM models available",
-    features: [
-      "Uppaal models for ICS communication protocols",
-      "NuSMV/PRISM for smart grid security properties",
-      "Runtime monitoring framework for CPS intrusion detection",
-      "Attack tree generation from system models",
-      "Case studies: IEC 61850 substation, wind turbine control",
-    ],
-  },
-];

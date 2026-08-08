@@ -65,13 +65,51 @@ function computeAffiliations(pub, roster) {
 // ---------------------------------------------------------------
 // 2. Match an author string against the roster to find slugs
 // ---------------------------------------------------------------
+function normalizeNameTokens(value) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
 function matchAuthorSlugs(authors, roster) {
   const slugs = [];
   for (const author of authors) {
-    const authorLower = author.toLowerCase();
+    const authorTokens = normalizeNameTokens(author);
+    const authorLower = authorTokens.join(" ");
+
     for (const member of roster) {
-      // Match if all name parts of the member appear in the author string
-      const match = member.nameParts.every((part) => authorLower.includes(part));
+      const memberTokens = member.nameParts;
+      if (!memberTokens.length) continue;
+
+      const lastName = memberTokens[memberTokens.length - 1];
+      const hasLastName = authorTokens.some((token) => token === lastName || token.startsWith(lastName.slice(0, 3)));
+      const firstNameParts = memberTokens.slice(0, -1);
+      const hasFirstNameMatch = firstNameParts.some((part) =>
+        authorTokens.some((token) => token === part || token.startsWith(part.slice(0, 2)))
+      );
+
+      const fullNameMatch = memberTokens.every((part) =>
+        authorTokens.some((token) => token === part || token.startsWith(part.slice(0, 3)))
+      );
+
+      const initialsMatch =
+        member.name
+          .split(/\s+/)
+          .filter(Boolean)
+          .map((part) => part[0])
+          .join("") &&
+        authorLower.includes(
+          member.name
+            .split(/\s+/)
+            .filter(Boolean)
+            .map((part) => part[0])
+            .join("")
+        );
+
+      const match = fullNameMatch || (hasLastName && (hasFirstNameMatch || initialsMatch));
       if (match) {
         if (!slugs.includes(member.slug)) {
           slugs.push(member.slug);

@@ -2,7 +2,7 @@ import { Shield, Building, GraduationCap, ExternalLink, Server, Cpu, Network, Lo
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="page-shell max-w-4xl">
       <div className="mb-10">
         <div className="badge mb-4">
           <Shield className="h-3.5 w-3.5 text-cyber-400" />
@@ -113,8 +113,8 @@ export default function AboutPage() {
             cyber-physical systems security. Through KIOS, CPSSec researchers gain access to
             extensive testbed infrastructure (including power system simulators, water distribution
             testbeds, and hardware-in-the-loop platforms), collaboration with over 50 industry
-            and academic partners, and participation in large-scale EU Horizon projects such as
-            COCOON, CITADEL Range, and ELECTRON.
+            and academic partners, and participation in European initiatives such as ACTING,
+            CITADEL Range, COCOON, and FOCAL.
           </p>
         </div>
       </section>

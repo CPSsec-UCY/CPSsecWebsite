@@ -31,7 +31,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --include=optional --no-audit --no-fund
 
       - name: Fetch and normalize publications
         run: node scripts/fetch-publications.js
