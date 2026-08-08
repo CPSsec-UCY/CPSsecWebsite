@@ -17,10 +17,10 @@ export default function PlatformsPage() {
           <Monitor className="h-3.5 w-3.5 text-cyber-400" />
           <span className="badge-label">Infrastructure</span>
         </div>
-        <h1 className="text-3xl font-bold text-white sm:text-4xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+        <h1 className="text-3xl font-bold text-white sm:text-4xl animate-fade-in-up" style={{ animationDelay: "50ms" }}>
           Platforms &amp; Testbeds
         </h1>
-        <p className="mt-2 text-slate-300 max-w-2xl animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+        <p className="mt-2 text-slate-300 max-w-2xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
           Our lab operates a range of hardware and software cyber ranges for
           security research, education, and training in cyber-physical systems.
         </p>
@@ -33,7 +33,7 @@ export default function PlatformsPage() {
             <div
               key={platform.name}
               className="card-hover p-6 animate-fade-in-up"
-              style={{ animationDelay: `${300 + i * 80}ms` }}
+              style={{ animationDelay: `${150 + i * 60}ms` }}
             >
               <div className="flex items-start gap-4">
                 <div className="rounded-xl border border-slate-700/50 bg-slate-800/70 p-3">
@@ -85,7 +85,7 @@ export default function PlatformsPage() {
         })}
       </div>
 
-      <div className="card p-6 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+      <div className="card p-6 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
         <h3 className="text-sm font-semibold text-white">
           Interested in collaborating or using our testbeds?
         </h3>

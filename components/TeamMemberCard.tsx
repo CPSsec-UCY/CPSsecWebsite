@@ -13,7 +13,7 @@ export default function TeamMemberCard({ member }: Props) {
       className="group card-hover p-5"
     >
       <div className="flex items-start gap-4">
-        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800">
+        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-800">
           {member.avatarUrl ? (
             <img
               src={p(member.avatarUrl)}

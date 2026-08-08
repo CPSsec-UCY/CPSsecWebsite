@@ -36,20 +36,20 @@ function HeroSection() {
             </span>
           </div>
 
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl animate-fade-in-up" style={{ animationDelay: "80ms" }}>
             Securing the
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyber-300 to-cyber-500">
               World&apos;s Critical Infrastructure
             </span>
           </h1>
 
-          <p className="mt-6 text-base leading-relaxed text-slate-200 sm:text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+          <p className="mt-6 text-base leading-relaxed text-slate-300 sm:text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "150ms" }}>
             CPSSec advances the security and resilience of cyber-physical systems
             through cutting-edge research in ICS/OT security, smart grid protection,
             IoT security, and cyber range technologies.
           </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+          <div className="mt-8 flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
             <a
               href={p("/publications")}
               className="inline-flex items-center gap-2 rounded-lg bg-cyber-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-cyber-400 transition-colors"
@@ -87,7 +87,7 @@ function StatsBanner() {
             <div
               key={stat.label}
               className="card p-4 text-center animate-fade-in-up"
-              style={{ animationDelay: `${400 + i * 80}ms` }}
+              style={{ animationDelay: `${250 + i * 40}ms` }}
             >
               <stat.icon className="mx-auto h-5 w-5 text-cyber-400" />
               <p className="mt-2 text-2xl font-bold text-white">{stat.value}</p>
@@ -104,7 +104,7 @@ function SelectedPublications({ publications }: { publications: any[] }) {
   return (
     <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "50ms" }}>
           <div>
             <h2 className="section-title">Selected Publications</h2>
             <p className="section-subtitle">
@@ -121,7 +121,7 @@ function SelectedPublications({ publications }: { publications: any[] }) {
 
         <div className="grid gap-4 md:grid-cols-2">
           {publications.map((pub, i) => (
-            <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${200 + i * 80}ms` }}>
+            <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${100 + i * 50}ms` }}>
               <PublicationCard publication={pub} showAbstract />
             </div>
           ))}
@@ -142,7 +142,7 @@ function TeamSpotlight({ members }: { members: any[] }) {
   return (
     <section className="border-b border-slate-800">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "50ms" }}>
           <div>
             <h2 className="section-title">Team Spotlight</h2>
             <p className="section-subtitle">Meet our researchers</p>
@@ -157,7 +157,7 @@ function TeamSpotlight({ members }: { members: any[] }) {
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {members.map((member, i) => (
-            <div key={member.id} className="animate-fade-in-up" style={{ animationDelay: `${200 + i * 80}ms` }}>
+            <div key={member.id} className="animate-fade-in-up" style={{ animationDelay: `${100 + i * 50}ms` }}>
               <TeamMemberCard member={member} />
             </div>
           ))}
@@ -178,7 +178,7 @@ function PlatformsPreview() {
   return (
     <section>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+        <div className="mb-8 flex items-center justify-between animate-fade-in-up" style={{ animationDelay: "50ms" }}>
           <div>
             <h2 className="section-title">Platforms &amp; Testbeds</h2>
             <p className="section-subtitle">
@@ -198,7 +198,7 @@ function PlatformsPreview() {
             <div
               key={p.name}
               className="card-hover p-5 animate-fade-in-up"
-              style={{ animationDelay: `${200 + i * 80}ms` }}
+              style={{ animationDelay: `${100 + i * 50}ms` }}
             >
               <p.icon className="h-5 w-5 text-cyber-400" />
               <h3 className="mt-3 text-sm font-semibold text-white">{p.name}</h3>

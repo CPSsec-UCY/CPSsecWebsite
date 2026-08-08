@@ -166,7 +166,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
       ) : (
         <div className="space-y-3">
           {filtered.map((pub, i) => (
-            <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 40}ms` }}>
+            <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 25}ms` }}>
               <PublicationCard publication={pub} showAbstract />
             </div>
           ))}

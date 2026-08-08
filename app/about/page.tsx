@@ -11,11 +11,11 @@ export default function AboutPage() {
         <h1 className="text-3xl font-bold text-white sm:text-4xl">About CPSSec</h1>
       </div>
 
-      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "50ms" }}>
         <h2 className="text-xl font-semibold text-white mb-4">
           Cyber-Physical Systems Security Lab
         </h2>
-        <div className="space-y-4 text-sm text-slate-200 leading-relaxed">
+        <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
           <p>
             The <strong className="text-white">Cyber-Physical Systems Security Lab (CPSSec)</strong> is a
             research laboratory within the Department of Electrical and Computer Engineering at
@@ -41,7 +41,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
         <div className="flex items-start gap-4 mb-4">
           <div className="badge-icon">
             <GraduationCap className="h-5 w-5 text-cyber-400" />
@@ -60,7 +60,7 @@ export default function AboutPage() {
             </a>
           </div>
         </div>
-        <p className="text-sm text-slate-200 leading-relaxed">
+        <p className="text-sm text-slate-300 leading-relaxed">
           The <strong className="text-white">University of Cyprus (UCY)</strong> is the flagship
           research university of the Republic of Cyprus, consistently ranked among the top
           institutions in the Eastern Mediterranean region. Founded in 1989, UCY has grown into
@@ -72,7 +72,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "300ms" }}>
+      <section className="card p-6 sm:p-8 mb-10 animate-fade-in-up" style={{ animationDelay: "150ms" }}>
         <div className="flex items-start gap-4 mb-4">
           <div className="badge-icon">
             <Building className="h-5 w-5 text-cyber-400" />
@@ -91,7 +91,7 @@ export default function AboutPage() {
             </a>
           </div>
         </div>
-        <div className="space-y-4 text-sm text-slate-200 leading-relaxed">
+        <div className="space-y-4 text-sm text-slate-300 leading-relaxed">
           <p>
             The <strong className="text-white">KIOS Research and Innovation Centre of Excellence</strong>
             is a world-class interdisciplinary research centre hosted by the University of Cyprus, with
@@ -119,7 +119,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="card p-6 sm:p-8 animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+      <section className="card p-6 sm:p-8 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
         <div className="flex items-start gap-4 mb-4">
           <div className="badge-icon">
             <Server className="h-5 w-5 text-cyber-400" />

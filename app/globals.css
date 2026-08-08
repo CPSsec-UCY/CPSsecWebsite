@@ -14,7 +14,7 @@
 
 @layer components {
   .card {
-    @apply rounded-xl border border-slate-700/60 bg-slate-800/70;
+    @apply rounded-xl border border-slate-600/40 bg-slate-800/70;
   }
 
   .card-hover {

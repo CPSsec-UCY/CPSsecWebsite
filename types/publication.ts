@@ -6,6 +6,7 @@ export interface Publication {
   title: string;
   authors: string[];
   authorSlugs: string[];
+  affiliations: string[];
   venue: string;
   year: number;
   type: PublicationType;

@@ -29,6 +29,7 @@ function loadTeamRoster() {
     roster.push({
       name: member.name,
       slug: member.slug,
+      joinedYear: member.joined ? parseInt(member.joined.slice(0, 4), 10) : undefined,
       nameParts: member.name
         .toLowerCase()
         .split(/\s+/)
@@ -36,6 +37,29 @@ function loadTeamRoster() {
     });
   }
   return roster;
+}
+
+// ---------------------------------------------------------------
+// Affiliations: University of Cyprus association
+// ---------------------------------------------------------------
+// A publication is marked as University of Cyprus work when at
+// least one matched author was a UCY member on/before the year of
+// publication. EXCEPTIONS: the denylist below covers collaborations
+// that were published after a member joined UCY but conducted
+// entirely at a prior institution (e.g. Glasgow / Lancaster era).
+const NON_UCY_PUBLICATION_IDS = new Set([
+  "cook2023icsforensics",
+  "mills2021practical",
+  "althobaiti2021energytheft",
+]);
+
+function computeAffiliations(pub, roster) {
+  if (NON_UCY_PUBLICATION_IDS.has(pub.id)) return [];
+  const joinedYears = pub.authorSlugs
+    .map((slug) => roster.find((m) => m.slug === slug)?.joinedYear)
+    .filter((y) => y !== undefined);
+  if (joinedYears.some((y) => y <= pub.year)) return ["University of Cyprus"];
+  return [];
 }
 
 // ---------------------------------------------------------------
@@ -93,6 +117,7 @@ function parseBibTeX(filePath) {
       title: fields.title || "Untitled",
       authors,
       authorSlugs: [],
+      affiliations: [],
       venue: fields.booktitle || fields.journal || fields.note || "",
       year,
       type: normalizeType(type),
@@ -161,15 +186,15 @@ async function main() {
   const bibPath = path.join(process.cwd(), "content", "publications.bib");
   let publications = [];
   if (fs.existsSync(bibPath)) {
-    console.log("[1/3] Parsing publications.bib...");
+    console.log("[1/4] Parsing publications.bib...");
     publications = parseBibTeX(bibPath);
     console.log(`       Found ${publications.length} entries.\n`);
   } else {
-    console.log("[1/3] No publications.bib found. Skipping.\n");
+    console.log("[1/4] No publications.bib found. Skipping.\n");
   }
 
   // Load team roster and auto-match authorSlugs
-  console.log("[2/3] Matching authors to team roster...");
+  console.log("[2/4] Matching authors to team roster...");
   const roster = loadTeamRoster();
   let matchedCount = 0;
   for (const pub of publications) {
@@ -181,6 +206,14 @@ async function main() {
   }
   console.log(`       Matched ${matchedCount}/${publications.length} publications.\n`);
 
+  // Mark University of Cyprus affiliations
+  console.log("[3/4] Marking University of Cyprus affiliations...");
+  for (const pub of publications) {
+    pub.affiliations = computeAffiliations(pub, roster);
+  }
+  const ucyCount = publications.filter((p) => p.affiliations.length > 0).length;
+  console.log(`       ${ucyCount}/${publications.length} marked as University of Cyprus.\n`);
+
   // Write output
   const outDir = path.join(process.cwd(), "public", "data");
   if (!fs.existsSync(outDir)) {
@@ -188,7 +221,7 @@ async function main() {
   }
   const outPath = path.join(outDir, "publications.json");
   fs.writeFileSync(outPath, JSON.stringify(publications, null, 2), "utf-8");
-  console.log(`[3/3] Written ${publications.length} publications to public/data/publications.json\n`);
+  console.log(`[4/4] Written ${publications.length} publications to public/data/publications.json\n`);
   console.log("=== Done ===");
 }
 

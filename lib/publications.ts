@@ -6,7 +6,8 @@ const pubPath = path.join(process.cwd(), "public/data/publications.json");
 
 export function getAllPublications(): Publication[] {
   const raw = fs.readFileSync(pubPath, "utf-8");
-  return JSON.parse(raw);
+  const publications: Publication[] = JSON.parse(raw);
+  return publications.filter((p) => p.affiliations?.includes("University of Cyprus"));
 }
 
 export function getPublicationsBySlug(slug: string): Publication[] {

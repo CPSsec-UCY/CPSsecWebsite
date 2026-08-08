@@ -26,9 +26,9 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
         Back to Team
       </a>
 
-      <div className="card p-6 sm:p-8 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
+      <div className="card p-6 sm:p-8 animate-fade-in-up" style={{ animationDelay: "50ms" }}>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-          <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-slate-600/30 bg-gradient-to-br from-cyber-900/50 to-slate-800">
+          <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-800">
             {member.avatarUrl ? (
               <img
                 src={p(member.avatarUrl)}
@@ -51,7 +51,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
               <p className="text-xs text-slate-300">Joined {member.joined}</p>
             </div>
 
-            <p className="mt-4 text-sm text-slate-200 leading-relaxed">
+            <p className="mt-4 text-sm text-slate-300 leading-relaxed">
               {member.bio}
             </p>
 
@@ -131,7 +131,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
         </div>
       </div>
 
-      <section className="mt-10 animate-fade-in-up" style={{ animationDelay: "200ms" }}>
+      <section className="mt-10 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
         <div className="mb-6 flex items-center gap-2">
           <BookOpen className="h-4 w-4 text-cyber-400" />
           <h2 className="text-lg font-semibold text-white">Publications</h2>
@@ -147,7 +147,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
         ) : (
           <div className="space-y-3">
             {publications.map((pub, i) => (
-              <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 60}ms` }}>
+              <div key={pub.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 40}ms` }}>
                 <PublicationCard publication={pub} showAbstract />
               </div>
             ))}
