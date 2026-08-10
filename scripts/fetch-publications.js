@@ -42,24 +42,18 @@ function loadTeamRoster() {
 // ---------------------------------------------------------------
 // Affiliations: University of Cyprus association
 // ---------------------------------------------------------------
-// A publication is marked as University of Cyprus work when at
-// least one matched author was a UCY member on/before the year of
-// publication. EXCEPTIONS: the denylist below covers collaborations
-// that were published after a member joined UCY but conducted
-// entirely at a prior institution (e.g. Glasgow / Lancaster era).
-const NON_UCY_PUBLICATION_IDS = new Set([
-  "cook2023icsforensics",
-  "mills2021practical",
-  "althobaiti2021energytheft",
+// Explicit allowlist of publications associated with the University
+// of Cyprus. A join-date heuristic proved too permissive (e.g. Vasilis
+// Ieropoulos' Cardiff collaborations were published after he joined
+// UCY but were conducted at Cardiff). Add new UCY work here.
+const UCY_PUBLICATION_IDS = new Set([
+  "lazarou2026accelerated",
+  "lazarou2025stealthy",
+  "christou2026acting",
 ]);
 
-function computeAffiliations(pub, roster) {
-  if (NON_UCY_PUBLICATION_IDS.has(pub.id)) return [];
-  const joinedYears = pub.authorSlugs
-    .map((slug) => roster.find((m) => m.slug === slug)?.joinedYear)
-    .filter((y) => y !== undefined);
-  if (joinedYears.some((y) => y <= pub.year)) return ["University of Cyprus"];
-  return [];
+function computeAffiliations(pub) {
+  return UCY_PUBLICATION_IDS.has(pub.id) ? ["University of Cyprus"] : [];
 }
 
 // ---------------------------------------------------------------
@@ -247,7 +241,7 @@ async function main() {
   // Mark University of Cyprus affiliations
   console.log("[3/4] Marking University of Cyprus affiliations...");
   for (const pub of publications) {
-    pub.affiliations = computeAffiliations(pub, roster);
+    pub.affiliations = computeAffiliations(pub);
   }
   const ucyCount = publications.filter((p) => p.affiliations.length > 0).length;
   console.log(`       ${ucyCount}/${publications.length} marked as University of Cyprus.\n`);
