@@ -3,36 +3,38 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run fetch:publications && next dev",
     "build": "npm run fetch:publications && next build",
     "fetch:publications": "node scripts/fetch-publications.js",
-    "start": "next start",
-    "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "start": "node scripts/serve-static.js",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test scripts/*.test.js",
+    "check:dois": "node scripts/check-dois.js",
+    "validate:publications": "node scripts/fetch-publications.js"
   },
   "dependencies": {
-    "next": "^14.2.0",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
-    "lucide-react": "^0.400.0"
+    "lucide-react": "^0.400.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@types/node": "^20.12.0",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
-    "typescript": "^5.4.0",
-    "tailwindcss": "^3.4.0",
-    "postcss": "^8.4.0",
-    "autoprefixer": "^10.4.0",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.0",
-    "bibtex-parse": "^2.0.0",
-    "node-fetch": "^2.7.0",
-    "picomatch": "^4.0.5"
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.7.0",
+    "bibtex-parse": "^2.1.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.6",
+    "nanoid": "^3.3.20",
+    "node": "^24.22.3",
+    "postcss": "^8.5.33",
+    "source-map-js": "^1.2.4",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   },
-  "overrides": {
-    "fdir": {
-      "picomatch": "^4.0.5"
-    }
+  "engines": {
+    "node": ">=20.9.0"
   }
 }

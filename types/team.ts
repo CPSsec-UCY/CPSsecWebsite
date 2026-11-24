@@ -19,6 +19,6 @@ export interface TeamMember {
   researchInterests: string[];
   scholarId?: string;
   orcidId?: string;
-  joined: string;
+  joined?: string;
   sortOrder: number;
 }

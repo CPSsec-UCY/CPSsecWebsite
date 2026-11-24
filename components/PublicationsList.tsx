@@ -13,6 +13,7 @@ interface Props {
 
 type SortKey = "newest" | "oldest" | "type" | "title";
 
+const collator = new Intl.Collator("en", { sensitivity: "base", numeric: true });
 const typeOrder: Record<PublicationType, number> = {
   journal: 0,
   conference: 1,
@@ -36,11 +37,11 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
   const domains = useMemo(() => {
     const d = new Set<ResearchDomain>();
     publications.forEach((p) => p.domain.forEach((dom) => d.add(dom)));
-    return Array.from(d).sort();
+    return Array.from(d).sort((a, b) => collator.compare(a, b));
   }, [publications]);
 
   const filtered = useMemo(() => {
-    let result = publications.filter((p) => {
+    const result = publications.filter((p) => {
       if (search) {
         const q = search.toLowerCase();
         const inTitle = p.title.toLowerCase().includes(q);
@@ -58,13 +59,13 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
     result.sort((a, b) => {
       switch (sortBy) {
         case "newest":
-          return b.year - a.year || a.title.localeCompare(b.title);
+          return b.year - a.year || collator.compare(a.title, b.title);
         case "oldest":
-          return a.year - b.year || a.title.localeCompare(b.title);
+          return a.year - b.year || collator.compare(a.title, b.title);
         case "type":
-          return typeOrder[a.type] - typeOrder[b.type] || b.year - a.year;
+          return typeOrder[a.type] - typeOrder[b.type] || b.year - a.year || collator.compare(a.title, b.title);
         case "title":
-          return a.title.localeCompare(b.title);
+          return collator.compare(a.title, b.title);
         default:
           return 0;
       }
@@ -73,7 +74,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
     return result;
   }, [publications, search, selectedYear, selectedDomain, selectedAuthor, sortBy]);
 
-  const hasFilters = search || selectedYear !== null || selectedDomain !== null || selectedAuthor !== null;
+  const hasFilters = Boolean(search || selectedYear !== null || selectedDomain !== null || selectedAuthor !== null);
 
   function clearFilters() {
     setSearch("");
@@ -87,8 +88,11 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
       <div className="mb-6 space-y-3">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+          <label htmlFor="publication-search" className="sr-only">Search publications</label>
           <input
-            type="text"
+            id="publication-search"
+            type="search"
+            aria-label="Search publications by title, author, or keyword"
             placeholder="Search publications by title, author, keyword..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -100,6 +104,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
           <Filter className="h-3.5 w-3.5 text-slate-400" />
           <div className="flex flex-wrap gap-1.5">
             <select
+              aria-label="Filter publications by year"
               value={selectedYear ?? ""}
               onChange={(e) => setSelectedYear(e.target.value ? Number(e.target.value) : null)}
               className="rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1.5 text-xs text-slate-200 outline-none focus:border-cyber-500/40"
@@ -111,6 +116,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
             </select>
 
             <select
+              aria-label="Filter publications by research domain"
               value={selectedDomain ?? ""}
               onChange={(e) => setSelectedDomain(e.target.value ? (e.target.value as ResearchDomain) : null)}
               className="rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1.5 text-xs text-slate-200 outline-none focus:border-cyber-500/40"
@@ -122,6 +128,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
             </select>
 
             <select
+              aria-label="Filter publications by team member"
               value={selectedAuthor ?? ""}
               onChange={(e) => setSelectedAuthor(e.target.value || null)}
               className="rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1.5 text-xs text-slate-200 outline-none focus:border-cyber-500/40"
@@ -147,6 +154,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
         <div className="flex flex-wrap items-center gap-2">
           <ArrowUpDown className="h-3.5 w-3.5 text-slate-400" />
           <select
+            aria-label="Sort publications"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortKey)}
             className="rounded-md border border-slate-700/50 bg-slate-800/70 px-2.5 py-1.5 text-xs text-slate-200 outline-none focus:border-cyber-500/40"
@@ -160,8 +168,8 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-slate-700 bg-slate-800/30 p-12 text-center">
-          <p className="text-sm text-slate-300">No publications match your filters.</p>
+        <div role="status" className="rounded-xl border border-dashed border-slate-700 bg-slate-800/30 p-12 text-center">
+          <p className="text-sm text-slate-300">{hasFilters ? "No publications match your filters." : "No publications have been added yet."}</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -173,7 +181,7 @@ export default function PublicationsList({ publications, teamMembers }: Props) {
         </div>
       )}
 
-      <p className="mt-4 text-xs text-slate-400">
+      <p aria-live="polite" className="mt-4 text-xs text-slate-400">
         Showing {filtered.length} of {publications.length} publications
       </p>
     </div>

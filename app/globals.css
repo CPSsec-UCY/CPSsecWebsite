@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./fonts/inter-latin.woff2") format("woff2");
+}
 
 @tailwind base;
 @tailwind components;
@@ -62,11 +68,11 @@
   }
 
   .btn-pill {
-    @apply inline-flex items-center gap-2 rounded-full bg-cyber-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(2,193,115,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyber-400;
+    @apply inline-flex items-center gap-2 rounded-full bg-cyber-500 px-6 py-3 text-sm font-bold text-[#03140c] shadow-[0_10px_30px_rgba(2,193,115,0.25)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-cyber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyber-300;
   }
 
   .btn-pill-outline {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-cyber-500/60 hover:text-cyber-300;
+    @apply inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-cyber-500/60 hover:text-cyber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyber-300;
   }
 
   .page-shell {
@@ -119,6 +125,15 @@
   }
 
   .scanline {
+    position: relative;
+  }
+
+  .scanline::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
     background: repeating-linear-gradient(
       0deg,
       transparent,
@@ -132,6 +147,25 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    .animate-fade-in-up,
+    .animate-fade-in {
+      opacity: 1;
+    }
   }
 }
 

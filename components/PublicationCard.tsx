@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useId, useState } from "react";
 import type { Publication } from "@/types/publication";
 import { FileText, Copy, ExternalLink } from "lucide-react";
 
@@ -43,6 +44,8 @@ export default function PublicationCard({ publication, showAbstract = false }: P
           </p>
           <p className="mt-0.5 text-xs italic text-slate-400">
             {publication.venue}
+            {publication.volume ? `, ${publication.volume}${publication.issue ? `(${publication.issue})` : ""}` : ""}
+            {publication.pages ? `: ${publication.pages}` : ""}
           </p>
         </div>
       </div>
@@ -91,15 +94,63 @@ export default function PublicationCard({ publication, showAbstract = false }: P
 }
 
 function CopyButton({ bibtex }: { bibtex: string }) {
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const statusId = useId();
+
+  useEffect(() => {
+    if (status === "idle") return;
+    const timeout = window.setTimeout(() => setStatus("idle"), 2500);
+    return () => window.clearTimeout(timeout);
+  }, [status]);
+
+  function fallbackCopy(text: string) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand("copy");
+    textarea.remove();
+    if (!copied) throw new Error("Clipboard unavailable");
+  }
+
+  async function copyBibtex() {
+    let copied = false;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(bibtex);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+    }
+    if (!copied) {
+      try {
+        fallbackCopy(bibtex);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+    }
+    setStatus(copied ? "copied" : "failed");
+  }
+
   return (
-    <button
-      onClick={() => {
-        navigator.clipboard.writeText(bibtex).catch(() => {});
-      }}
-      className="inline-flex items-center gap-1 rounded-md bg-slate-700/50 px-2.5 py-1 text-[10px] font-medium text-slate-200 hover:bg-slate-700 transition-colors"
-    >
-      <Copy className="h-3 w-3" />
-      BibTeX
-    </button>
+    <>
+      <button
+        type="button"
+        onClick={copyBibtex}
+        aria-describedby={status !== "idle" ? statusId : undefined}
+        className="inline-flex items-center gap-1 rounded-md bg-slate-700/50 px-2.5 py-1 text-[10px] font-medium text-slate-200 hover:bg-slate-700 transition-colors"
+      >
+        <Copy className="h-3 w-3" />
+        {status === "copied" ? "Copied" : status === "failed" ? "Copy failed" : "BibTeX"}
+      </button>
+      <span id={statusId} aria-live="polite" className="sr-only">
+        {status === "copied" ? "BibTeX copied" : status === "failed" ? "BibTeX could not be copied" : ""}
+      </span>
+    </>
   );
 }

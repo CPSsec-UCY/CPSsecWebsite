@@ -1,7 +1,7 @@
 {
   "id": "vasilis-ieropoulos",
   "slug": "vasilis-ieropoulos",
-  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/Vasilis-Ieropoulos-r5jk3ikn3dyce9yyczpehqb733lxhq771s4plqfz94.jpg",
+  "avatarUrl": "/avatars/vasilis-ieropoulos.jpg",
   "name": "Vasilis Ieropoulos",
   "role": "Postdoctoral Researcher",
   "bio": "Vasilis Ieropoulos is a Postdoctoral Researcher at the KIOS Centre of Excellence, University of Cyprus, and a member of the Cyber-Physical Systems Security Lab. His research focuses on intrusion detection for resource-constrained IoT devices, federated learning at the edge, radio frequency vulnerabilities, and GPS/GNSS interference. He has published on collaborative intrusion detection, RF security, and cyber range federation.",
@@ -9,7 +9,7 @@
   "socials": {
     "email": "ieropoulos.vasilis@ucy.ac.cy",
     "googleScholar": "https://scholar.google.com/citations?user=IPPH1vQAAAAJ&hl=en",
-    "orcid": "0000-0002-1234-5678"
+    "orcid": "https://orcid.org/0009-0002-0196-6571"
   },
   "researchInterests": ["IoT Security", "Intrusion Detection", "Federated Learning", "Embedded Systems", "Radio Frequency Security"],
   "scholarId": "IPPH1vQAAAAJ",

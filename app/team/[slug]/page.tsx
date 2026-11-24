@@ -32,7 +32,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
           <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-800">
             {member.avatarUrl ? (
               <Image
-                src={member.avatarUrl}
+                src={p(member.avatarUrl)}
                 alt={member.name}
                 width={96}
                 height={96}
@@ -51,7 +51,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
                 {member.name}
               </h1>
               <p className="text-sm font-medium text-cyber-400">{member.role}</p>
-              <p className="text-xs text-slate-300">Joined {member.joined}</p>
+              {member.joined && <p className="text-xs text-slate-300">Joined {member.joined}</p>}
             </div>
 
             <p className="mt-4 text-sm text-slate-300 leading-relaxed">
@@ -109,7 +109,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
               )}
               {member.socials.orcid && (
                 <a
-                  href={`https://orcid.org/${member.socials.orcid}`}
+                  href={member.socials.orcid}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-300 hover:text-cyber-400 transition-colors"

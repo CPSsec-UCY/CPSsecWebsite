@@ -7,8 +7,7 @@ const pubPath = path.join(process.cwd(), "public/data/publications.json");
 export function getAllPublications(): Publication[] {
   const raw = fs.readFileSync(pubPath, "utf-8");
   const publications: Publication[] = JSON.parse(raw);
-  // Only publications associated with the University of Cyprus are shown.
-  return publications.filter((p) => p.affiliations?.includes("University of Cyprus"));
+  return publications.sort((a, b) => b.year - a.year || a.title.localeCompare(b.title, "en"));
 }
 
 export function getPublicationsBySlug(slug: string): Publication[] {

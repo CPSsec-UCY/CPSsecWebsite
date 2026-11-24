@@ -1,7 +1,7 @@
 import type { TeamMember } from "@/types/team";
 import Image from "next/image";
 import { p } from "@/lib/base";
-import { Github, Linkedin, Mail, ExternalLink, GraduationCap } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, GraduationCap, ArrowRight } from "lucide-react";
 
 interface Props {
   member: TeamMember;
@@ -17,7 +17,7 @@ export default function TeamMemberCard({ member }: Props) {
         <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-cyber-500/20 bg-gradient-to-br from-cyber-900/50 to-slate-800 shadow-inner">
           {member.avatarUrl ? (
             <Image
-              src={member.avatarUrl}
+              src={p(member.avatarUrl)}
               alt={member.name}
               width={64}
               height={64}
@@ -58,26 +58,13 @@ export default function TeamMemberCard({ member }: Props) {
       </div>
 
       <div className="mt-3 flex items-center gap-2 border-t border-slate-700/50 pt-3">
-        {member.socials.github && (
-          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="GitHub">
-            <Github className="h-3.5 w-3.5" />
-          </span>
-        )}
-        {member.socials.linkedin && (
-          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="LinkedIn">
-            <Linkedin className="h-3.5 w-3.5" />
-          </span>
-        )}
-        {member.socials.email && (
-          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="Email">
-            <Mail className="h-3.5 w-3.5" />
-          </span>
-        )}
-        {member.socials.googleScholar && (
-          <span className="text-slate-300 hover:text-cyber-400 transition-colors" aria-label="Google Scholar">
-            <GraduationCap className="h-3.5 w-3.5" />
-          </span>
-        )}
+        <span className="mr-auto inline-flex items-center gap-1 text-xs font-medium text-slate-400 group-hover:text-cyber-300">
+          View profile <ArrowRight className="h-3 w-3" />
+        </span>
+        {member.socials.github && <Github aria-hidden="true" className="h-3.5 w-3.5 text-slate-500" />}
+        {member.socials.linkedin && <Linkedin aria-hidden="true" className="h-3.5 w-3.5 text-slate-500" />}
+        {member.socials.email && <Mail aria-hidden="true" className="h-3.5 w-3.5 text-slate-500" />}
+        {member.socials.googleScholar && <GraduationCap aria-hidden="true" className="h-3.5 w-3.5 text-slate-500" />}
       </div>
     </a>
   );

@@ -8,6 +8,9 @@ export interface Publication {
   authorSlugs: string[];
   affiliations: string[];
   venue: string;
+  volume?: string;
+  issue?: string;
+  pages?: string;
   year: number;
   type: PublicationType;
   domain: ResearchDomain[];
@@ -16,5 +19,6 @@ export interface Publication {
   bibtex: string;
   abstract: string;
   tags: string[];
+  peerReviewed: boolean;
   citations?: number;
 }

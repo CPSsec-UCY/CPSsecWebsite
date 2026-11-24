@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { Shield, Cpu, BookOpen, Users, Database, Network, ArrowRight, ArrowUpRight, CheckCircle2, Server, Lock } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { getAllPublications } from "@/lib/publications";
 import { getAllTeamMembers } from "@/lib/team";
 import { getAllPlatforms, getActivePlatforms } from "@/lib/platforms";
 import { getAllProjects } from "@/lib/projects";
+import { researchThemes } from "@/lib/research-themes";
 import { p } from "@/lib/base";
 import PublicationCard from "@/components/PublicationCard";
 import TeamMemberCard from "@/components/TeamMemberCard";
@@ -12,7 +14,7 @@ import type { TeamMember } from "@/types/team";
 import type { Platform } from "@/types/platform";
 import type { Project } from "@/types/project";
 
-const homePlatformIconMap: Record<Platform["icon"], any> = {
+const homePlatformIconMap: Record<Platform["icon"], LucideIcon> = {
   Network,
   Shield,
   Cpu,
@@ -42,20 +44,18 @@ export default function HomePage() {
       <TrustedStrip />
       <ResearchThemes />
       <AboutPreview />
-      <PlatformsPreview platforms={platforms} />
-      <ProjectsPreview projects={projects} />
+      {platforms.length > 0 && <PlatformsPreview platforms={platforms} />}
+      {projects.length > 0 && <ProjectsPreview projects={projects} />}
       <ProcessSection />
-      <SelectedPublications publications={publications} />
-      <TeamSpotlight members={members} />
+      {publications.length > 0 && <SelectedPublications publications={publications} />}
+      {members.length > 0 && <TeamSpotlight members={members} />}
       <ContactCta />
     </>
   );
 }
 
 function countPeerReviewedPapers(publications: Publication[]) {
-  return publications.filter((publication) => {
-    return publication.type === "conference" || publication.type === "journal" || publication.type === "workshop";
-  }).length;
+  return publications.filter((publication) => publication.peerReviewed).length;
 }
 
 function HeroSection({
@@ -100,7 +100,7 @@ function HeroSection({
               {avatars.map((m) => (
                 <span key={m.id} className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-[#060606] bg-slate-800">
                   {m.avatarUrl ? (
-                    <Image src={m.avatarUrl} alt={m.name} width={40} height={40} className="h-full w-full object-cover" />
+                    <Image src={p(m.avatarUrl)} alt={m.name} width={40} height={40} className="h-full w-full object-cover" />
                   ) : null}
                 </span>
               ))}
@@ -169,14 +169,13 @@ function TrustedStrip() {
   );
 }
 
-const researchThemes = [
-  { title: "ICS/OT Security", description: "SCADA, PLC, and RTU security, protocol analysis, and network segmentation for industrial environments.", icon: Cpu },
-  { title: "Smart Grid Protection", description: "Intrusion detection, energy theft prevention, and resilient control for modern power grids.", icon: Network },
-  { title: "IoT Security", description: "Lightweight intrusion detection, federated learning at the edge, and firmware security.", icon: Lock },
-  { title: "Cyber Ranges", description: "Hardware-in-the-loop simulation and federated training platforms for security exercises.", icon: Server },
-  { title: "Network Security", description: "Anomaly detection, botnet profiling, and threat intelligence for critical networks.", icon: Shield },
-  { title: "Post-Quantum Cryptography", description: "PQC benchmarking and deployment for resource-constrained embedded devices.", icon: BookOpen },
-];
+const researchThemeIcons: Record<(typeof researchThemes)[number]["icon"], LucideIcon> = {
+  Cpu,
+  Network,
+  Lock,
+  Server,
+  Shield,
+};
 
 function ResearchThemes() {
   return (
@@ -190,15 +189,17 @@ function ResearchThemes() {
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {researchThemes.map((theme, i) => (
+          {researchThemes.map((theme, i) => {
+            const Icon = researchThemeIcons[theme.icon];
+            return (
             <a
               key={theme.title}
               href={p("/about")}
               className="card-hover group p-6 animate-fade-in-up"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyber-500/15 text-cyber-300 transition-colors group-hover:bg-cyber-500 group-hover:text-white">
-                <theme.icon className="h-5 w-5" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyber-500/15 text-cyber-300 transition-colors group-hover:bg-cyber-500 group-hover:text-[#03140c]">
+                <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-4 text-base font-bold text-white">{theme.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-300">{theme.description}</p>
@@ -206,7 +207,8 @@ function ResearchThemes() {
                 Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </span>
             </a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -430,11 +432,11 @@ function ContactCta() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.25),transparent_55%)]" />
           <div className="relative flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
             <div className="max-w-2xl">
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">Newsletter & contact</span>
-              <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#03140c]/80">Collaborate with us</span>
+              <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-[#03140c] sm:text-3xl">
                 Have a critical infrastructure challenge? Let&apos;s talk.
               </h2>
-              <p className="mt-2 text-sm leading-relaxed text-white/85">
+              <p className="mt-2 text-sm leading-relaxed text-[#03140c]">
                 We collaborate with academic and industry partners across Europe. Reach out through KIOS to discuss research, testbeds, and projects.
               </p>
             </div>
@@ -448,7 +450,7 @@ function ContactCta() {
                 Contact KIOS
                 <ArrowUpRight className="h-4 w-4" />
               </a>
-              <a href={p("/platforms")} className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/10">
+              <a href={p("/platforms")} className="inline-flex items-center gap-2 rounded-full border border-[#03140c]/60 px-6 py-3 text-sm font-semibold text-[#03140c] transition-all duration-200 hover:-translate-y-0.5 hover:bg-black/10">
                 Explore Platforms
                 <ArrowRight className="h-4 w-4" />
               </a>

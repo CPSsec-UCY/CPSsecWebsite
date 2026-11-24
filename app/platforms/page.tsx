@@ -1,8 +1,9 @@
 import { Network, Shield, Cpu, Monitor } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { getAllPlatforms } from "@/lib/platforms";
 import type { Platform } from "@/types/platform";
 
-const iconMap: Record<Platform["icon"], any> = {
+const iconMap: Record<Platform["icon"], LucideIcon> = {
   Network,
   Shield,
   Cpu,
@@ -28,6 +29,11 @@ export default function PlatformsPage() {
         </p>
       </div>
 
+      {platforms.length === 0 ? (
+        <div role="status" className="card p-10 text-center text-sm text-slate-300">
+          Platform information is being updated.
+        </div>
+      ) : (
       <div className="grid gap-6 md:grid-cols-2">
         {platforms.map((platform, i) => {
           const Icon = iconMap[platform.icon] || Network;
@@ -56,9 +62,9 @@ export default function PlatformsPage() {
                   </div>
 
                   <div className="mt-4 space-y-2">
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                       Features
-                    </h4>
+                    </h3>
                     <ul className="space-y-1">
                       {platform.features.map((f) => (
                         <li
@@ -86,6 +92,7 @@ export default function PlatformsPage() {
           );
         })}
       </div>
+      )}
 
       <div className="card p-6 animate-fade-in-up" style={{ animationDelay: "100ms" }}>
         <h3 className="text-sm font-semibold text-white">

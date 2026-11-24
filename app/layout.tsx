@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { p } from "@/lib/base";
+import SiteNav from "@/components/SiteNav";
+import { researchThemes } from "@/lib/research-themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -33,8 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="font-sans scanline min-h-screen">
+        <a href="#main-content" className="sr-only z-[100] rounded-md bg-white px-4 py-2 text-slate-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+          Skip to content
+        </a>
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>
@@ -46,7 +51,7 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#060606]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <a href={p("/")} className="group flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyber-500 font-mono text-sm font-bold text-white shadow-[0_8px_24px_rgba(2,193,115,0.35)] transition-transform duration-200 group-hover:scale-105">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyber-500 font-mono text-sm font-bold text-[#03140c] shadow-[0_8px_24px_rgba(2,193,115,0.35)] transition-transform duration-200 group-hover:scale-105">
             &lt;/&gt;
           </div>
           <div className="flex flex-col">
@@ -59,13 +64,7 @@ function Header() {
           </div>
         </a>
 
-        <nav className="flex flex-wrap items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1.5">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About Us</NavLink>
-          <NavLink href="/team">Team</NavLink>
-          <NavLink href="/publications">Publications</NavLink>
-          <NavLink href="/platforms">Platforms</NavLink>
-        </nav>
+        <SiteNav />
 
         <a
           href="https://www.kios.ucy.ac.cy/contact-details/"
@@ -81,17 +80,6 @@ function Header() {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={p(href)}
-      className="rounded-full px-3.5 py-2 text-xs font-semibold text-slate-200 transition-all duration-200 hover:bg-cyber-500/15 hover:text-white"
-    >
-      {children}
-    </a>
-  );
-}
-
 function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#080808]">
@@ -99,7 +87,7 @@ function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyber-500 font-mono text-sm font-bold text-white">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyber-500 font-mono text-sm font-bold text-[#03140c]">
                 &lt;/&gt;
               </div>
               <span className="text-base font-extrabold tracking-tight text-white">CPSSec</span>
@@ -158,9 +146,9 @@ function Footer() {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-white">Research Areas</h3>
             <div className="mt-4 flex flex-col gap-2.5">
-              {["ICS/OT Security", "Smart Grid Protection", "IoT Security", "Cyber Ranges", "Network Security"].map((area) => (
-                <a key={area} href={p("/about")} className="w-fit text-sm text-slate-300 transition-colors hover:text-cyber-300">
-                  {area}
+              {researchThemes.map((theme) => (
+                <a key={theme.title} href={p("/about#research-themes")} className="w-fit text-sm text-slate-300 transition-colors hover:text-cyber-300">
+                  {theme.title}
                 </a>
               ))}
             </div>
@@ -180,7 +168,7 @@ function Footer() {
               rel="noopener noreferrer"
               className="btn-pill mt-5 !px-5 !py-2.5 text-xs"
             >
-              Get Free Estimate
+              Work With Us
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
