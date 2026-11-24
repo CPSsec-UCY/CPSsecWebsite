@@ -1,0 +1,15 @@
+{
+  "id": "katerina-loizidi",
+  "slug": "katerina-loizidi",
+  "name": "Katerina Loizidi",
+  "role": "Research Engineer",
+  "bio": "Katerina Loizidi is a Research Engineer I at the KIOS Research and Innovation Center of Excellence and a postgraduate student in Computer Science at the University of Cyprus. She holds a Bachelor's degree in Mathematics and a Master of Business Administration (MBA).",
+  "shortBio": "Research engineer and postgraduate student in Computer Science working on IoT platforms.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/Katerina-Loizidi-rwae9jevks4wipmbqcbywnh7xitmf1nluk6t7ykgfs.jpeg",
+  "socials": {
+    "github": "katerinaloizidi"
+  },
+  "researchInterests": ["IoT Security", "Embedded Systems", "Data Analysis", "Applied Mathematics"],
+  "joined": "2025-01-01",
+  "sortOrder": 13
+}

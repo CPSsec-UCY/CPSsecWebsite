@@ -10,17 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         cyber: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          300: "#93c5fd",
-          400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e40af",
-          900: "#1e3a8a",
-          950: "#172554",
+          50: "#e9fbf2",
+          100: "#d3f6e3",
+          200: "#a8ecc8",
+          300: "#6fdc9d",
+          400: "#34c877",
+          500: "#02c173",
+          600: "#02a362",
+          700: "#028551",
+          800: "#066b43",
+          900: "#065838",
+          950: "#022c1d",
         },
         slate: {
           850: "#172033",
@@ -37,6 +37,7 @@ const config: Config = {
         },
       },
       fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
       animation: {
