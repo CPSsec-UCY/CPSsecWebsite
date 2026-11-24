@@ -1,0 +1,15 @@
+{
+  "id": "theofanis-eleftheriades",
+  "slug": "theofanis-eleftheriades",
+  "name": "Theofanis Eleftheriades",
+  "role": "Software Engineer",
+  "bio": "Theofanis Eleftheriades graduated from Cardiff University with a Bachelor's in Mechanical Engineering in 2021 and a Master's in Software Engineering in 2022. He has previously worked as a System Administrator for a utility company and is currently employed as a Software Engineer I at KIOS Research and Innovation Center of Excellence.",
+  "shortBio": "Software engineer developing research platforms and cyber range infrastructure at KIOS CoE.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/Theofanis-Eleftheriades-qgujso4jiktttv61fpyevzqw4o6x53br4rdhjpx260.jpg",
+  "socials": {
+    "github": "theofanisele"
+  },
+  "researchInterests": ["Software Engineering", "Cyber Ranges", "Systems Administration", "Embedded Systems"],
+  "joined": "2024-01-01",
+  "sortOrder": 11
+}

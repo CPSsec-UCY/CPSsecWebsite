@@ -50,6 +50,24 @@ const UCY_PUBLICATION_IDS = new Set([
   "lazarou2026accelerated",
   "lazarou2025stealthy",
   "christou2026acting",
+  "paphitis2026explainability",
+  "ieropoulos2026modular",
+  "tsanaktsidis2026pqctls",
+  "alsharif2026smlt",
+  "feng2026hardfuzz",
+  "paphitis2026unlearning",
+  "ntougias2026capacity",
+  "yang2026invariants",
+  "almazarqi2025botpro",
+  "soban2025adaptivefuzzing",
+  "alsharif2025drift",
+  "feng2025fuzzrducc",
+  "almazarqi2025ddos",
+  "photiades2025stratification",
+  "marnerides2025pqclass",
+  "tan2025apt",
+  "alsharif2025energymarket",
+  "almazarqi2024macroscopic",
 ]);
 
 function computeAffiliations(pub) {
@@ -118,6 +136,10 @@ function matchAuthorSlugs(authors, roster) {
 // ---------------------------------------------------------------
 // 3. Simple BibTeX parser (no external dependency needed)
 // ---------------------------------------------------------------
+function unescapeBibValue(value) {
+  return value.replace(/\\([&%_$#])/g, "$1");
+}
+
 function parseBibTeX(filePath) {
   const content = fs.readFileSync(filePath, "utf-8");
   const entries = [];
@@ -138,7 +160,7 @@ function parseBibTeX(filePath) {
       : [];
     const year = fields.year ? parseInt(fields.year, 10) : new Date().getFullYear();
     const tags = fields.keywords
-      ? fields.keywords.split(",").map((k) => k.trim().toLowerCase())
+      ? fields.keywords.split(",").map((k) => unescapeBibValue(k.trim().toLowerCase()))
       : [];
 
     // Infer domain from tags / venue
@@ -146,11 +168,11 @@ function parseBibTeX(filePath) {
 
     entries.push({
       id,
-      title: fields.title || "Untitled",
+      title: unescapeBibValue(fields.title || "Untitled"),
       authors,
       authorSlugs: [],
       affiliations: [],
-      venue: fields.booktitle || fields.journal || fields.note || "",
+      venue: unescapeBibValue(fields.booktitle || fields.journal || fields.note || ""),
       year,
       type: normalizeType(type),
       domain,
@@ -159,7 +181,7 @@ function parseBibTeX(filePath) {
       bibtex: `@${type.toLowerCase()}{${id},\n${Object.entries(fields)
         .map(([k, v]) => `  ${k} = {${v}}`)
         .join(",\n")}\n}`,
-      abstract: fields.abstract || "",
+      abstract: unescapeBibValue(fields.abstract || ""),
       tags,
     });
   }

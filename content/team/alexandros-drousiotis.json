@@ -1,0 +1,15 @@
+{
+  "id": "alexandros-drousiotis",
+  "slug": "alexandros-drousiotis",
+  "name": "Alexandros Drousiotis",
+  "role": "PhD Candidate",
+  "bio": "Alexandros Drousiotis received his B.Sc. degree in Electrical and Computer Engineering from the University of Cyprus in 2026. His undergraduate thesis focused on detecting stealthy cyber-attacks in industrial control systems. He is currently a PhD Student under the supervision of Prof. Marnerides in the Department of Electrical and Computer Engineering at the University of Cyprus, carrying out his research at KIOS Research and Innovation Center of Excellence. His research focuses on Cyber-Physical Systems, with emphasis on satellite communications.",
+  "shortBio": "PhD student researching cyber-physical systems and satellite communications.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/Alexandros-Drousiotis-ruqxu51mrblxbsu58197zndm9hsu0a6lg5vlk90aig.jpeg",
+  "socials": {
+    "github": "drousias"
+  },
+  "researchInterests": ["Cyber-Physical Systems", "Satellite Communications", "ICS Security", "Stealthy Attack Detection"],
+  "joined": "2026-09-01",
+  "sortOrder": 10
+}

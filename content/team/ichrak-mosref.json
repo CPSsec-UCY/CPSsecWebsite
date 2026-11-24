@@ -1,0 +1,15 @@
+{
+  "id": "ichrak-mosref",
+  "slug": "ichrak-mosref",
+  "name": "Ichrak Mosref",
+  "role": "Research Engineer",
+  "bio": "Ichrak Mosref holds a BEng in Industrial Electronics from the National School of Engineers in Sousse, Tunisia, awarded in 2025. During her graduation project, she joined an R&D engineering team, where she worked as an Embedded Linux Developer. Ichrak joined the KIOS Research and Innovation Center of Excellence in August 2026 as a Research Engineer I.",
+  "shortBio": "Research engineer working on embedded Linux and industrial electronics.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/female-pl1azpmpogbqo05st4okl0p7378l73hhhw06r2un20.jpg",
+  "socials": {
+    "github": "IchrakMosref"
+  },
+  "researchInterests": ["Embedded Linux", "Industrial Electronics", "Embedded Security", "IoT"],
+  "joined": "2026-08-01",
+  "sortOrder": 12
+}

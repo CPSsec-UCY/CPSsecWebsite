@@ -1,0 +1,15 @@
+{
+  "id": "kyriakos-christou",
+  "slug": "kyriakos-christou",
+  "name": "Kyriakos Christou",
+  "role": "Software Engineer",
+  "bio": "Kyriakos Christou is a Senior Software Engineer at the KIOS Research and Innovation Center of Excellence at the University of Cyprus. He holds a BSc and PhD in Computer Science and Engineering from the University of Cyprus and an MSc in Computer and Information Science from the University of Pennsylvania. With strong experience in project management and team leadership, he drives digital transformation initiatives that enhance efficiency and foster innovation. A PMP-certified professional and Professional Scrum Master, he has managed IT projects of various sizes using Agile and Waterfall methodologies. His expertise includes systems architecture assessment, information systems integration, technical problem-solving, and cross-functional collaboration.",
+  "shortBio": "Senior software engineer working on cyber range platforms and digital transformation.",
+  "avatarUrl": "https://www.kios.ucy.ac.cy/wp-content/uploads/elementor/thumbs/kyriacos-christou-rif2d4j4ymnc0vk1iaodurgb4a49dvtyei09b68xmg.jpg",
+  "socials": {
+    "github": "kchris36"
+  },
+  "researchInterests": ["Software Engineering", "Systems Architecture", "Cyber Ranges", "Digital Transformation", "Project Management"],
+  "joined": "2024-01-01",
+  "sortOrder": 4
+}

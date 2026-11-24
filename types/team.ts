@@ -11,7 +11,7 @@ export interface TeamMember {
   id: string;
   slug: string;
   name: string;
-  role: "Lab Director" | "Faculty" | "Postdoctoral Researcher" | "PhD Candidate" | "MSc Student" | "Research Assistant" | "Software Engineer" | "Research Associate" | "Alumni";
+  role: "Lab Director" | "Faculty" | "Postdoctoral Researcher" | "PhD Candidate" | "MSc Student" | "Research Assistant" | "Research Engineer" | "Software Engineer" | "Research Associate" | "Alumni";
   bio: string;
   shortBio: string;
   avatarUrl?: string;

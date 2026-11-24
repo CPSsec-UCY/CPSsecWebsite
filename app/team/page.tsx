@@ -11,6 +11,7 @@ export default function TeamPage() {
     "Postdoctoral Researcher",
     "PhD Candidate",
     "Research Associate",
+    "Research Engineer",
     "Software Engineer",
     "MSc Student",
     "Research Assistant",
