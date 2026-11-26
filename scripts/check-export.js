@@ -23,6 +23,15 @@ if (!fs.existsSync(root)) {
 collect(root);
 const errors = [];
 const references = new Set();
+const teamDir = path.join(process.cwd(), "content/team");
+const expectedProfiles = new Map(
+  fs.readdirSync(teamDir)
+    .filter((file) => file.endsWith(".json"))
+    .map((file) => {
+      const member = JSON.parse(fs.readFileSync(path.join(teamDir, file), "utf-8"));
+      return [member.slug, member.name];
+    }),
+);
 
 function addReference(reference, file) {
   if (!reference.startsWith("/") || reference.startsWith("//")) return;
@@ -35,6 +44,16 @@ function addReference(reference, file) {
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf-8");
+  if (html.includes('id="__next_error__"') || html.includes("NEXT_HTTP_ERROR_FALLBACK;404")) {
+    errors.push(`${path.relative(root, file)}: exported a Next error page`);
+  }
+  const profileMatch = path.relative(root, file).match(/^team\/([a-z0-9-]+)\.html$/);
+  if (profileMatch) {
+    const expectedName = expectedProfiles.get(profileMatch[1]);
+    if (!expectedName || !html.includes(expectedName)) {
+      errors.push(`${path.relative(root, file)}: missing expected profile content`);
+    }
+  }
   for (const tag of html.matchAll(/<[^>]+>/g)) {
     const rel = tag[0].match(/\brel="([^"]+)"/)?.[1] || "";
     if (/^<link\b/i.test(tag[0]) && /\b(?:preconnect|dns-prefetch)\b/.test(rel)) continue;

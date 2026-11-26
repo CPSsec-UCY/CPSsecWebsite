@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   return members.map((member) => ({ slug: member.slug }));
 }
 
-export default function TeamMemberPage({ params }: { params: { slug: string } }) {
-  const member = getTeamMemberBySlug(params.slug);
+export default async function TeamMemberPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const member = getTeamMemberBySlug(slug);
   if (!member) notFound();
 
   const publications = getPublicationsBySlug(member.slug);
